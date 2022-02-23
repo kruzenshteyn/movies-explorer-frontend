@@ -1,0 +1,15 @@
+.navTab {
+  outline: solid 3px red;
+}
+
+@media screen and (max-width: 1024px) {
+  .navTab {
+    outline: solid 2px green;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .navTab {
+    outline: solid 1px blue;
+  }
+}

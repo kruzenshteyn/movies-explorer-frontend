@@ -1,0 +1,15 @@
+.aboutMe {
+  outline: solid 3px red;
+}
+
+@media screen and (max-width: 1024px) {
+  .aboutMe {
+    outline: solid 2px green;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .aboutMe {
+    outline: solid 1px blue;
+  }
+}

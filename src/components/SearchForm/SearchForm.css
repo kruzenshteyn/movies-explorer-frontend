@@ -1,0 +1,15 @@
+.searchForm {
+  outline: solid 3px red;
+}
+
+@media screen and (max-width: 1024px) {
+  .searchForm {
+    outline: solid 2px green;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .searchForm {
+    outline: solid 1px blue;
+  }
+}

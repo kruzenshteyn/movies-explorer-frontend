@@ -1,0 +1,16 @@
+.main {
+  max-width: 880px;
+  outline: dashed 5px rgb(252, 248, 1);
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
+    outline: solid 2px green;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .main {
+    outline: solid 1px blue;
+  }
+}
