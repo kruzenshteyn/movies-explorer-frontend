@@ -1,0 +1,56 @@
+.headerMain {
+  margin: 0 auto;
+  
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: black;
+  padding: 18px 70px;
+}
+
+.headerMain__logo{
+  width: 38px;
+  height: 38px;
+}
+
+.headerMain__auth{
+  display: flex;
+}
+
+.headerMain__button{
+  width: 76px;
+  height: 32px;
+  background: #2BE080;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.headerMain__link{
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  margin-right: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+  .headerMain {
+    max-width: 88.125vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .headerMain {
+    max-width: 100%;
+    margin-top: 28px;
+    padding-bottom: 28px;
+  }
+}

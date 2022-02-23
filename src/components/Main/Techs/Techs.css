@@ -1,5 +1,4 @@
 .techs {
-  outline: solid 3px red;
   width: 100%;
   max-width: 1140px;
   display: flex;
@@ -47,8 +46,7 @@
 
   font-weight: 400;
   font-size: 14px;
-  line-height: 17px;
-  /* identical to box height */
+  line-height: 1.21;
   text-align: center;  
   letter-spacing: -0.04em;
   margin-right: 10px;

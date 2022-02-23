@@ -1,5 +1,4 @@
-.main {  
-  outline: dashed 5px rgb(252, 248, 1);
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;

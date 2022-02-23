@@ -1,17 +1,16 @@
-import logo from '../../logo.svg';
 import './App.css';
 import '../Header/Header';
 import '../Footer/Footer';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import HeaderMain from '../Main/HeaderMain/HeaderMain';
 
 import Main from '../Main/Main';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
+//import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function App() {
   return (
     <div className="App">      
-      <Header />
+      <HeaderMain />
       <Main />
       <Footer />
     </div>

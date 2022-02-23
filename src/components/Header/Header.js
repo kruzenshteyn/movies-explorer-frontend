@@ -1,10 +1,12 @@
 import './Header.css';
+import logo from '../../images/logo.png';
 
 function Header(props) {
 
   return (
     <header className="header">
-      <p>Некоторый текст</p>
+      <img src={logo} alt='Лого' className="header"></img>
+      
     </header>
   );
 }
