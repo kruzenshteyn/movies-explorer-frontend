@@ -1,0 +1,50 @@
+.notFoundPage {
+  font-style: normal;
+  font-weight: normal;
+  margin: 0 auto;  
+  color: #000000;
+}
+
+.notFoundPage__title{
+  font-style: normal;
+  font-weight: normal;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 246px;
+  margin-bottom: 0;
+  font-size: 140px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.notFoundPage__text{
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 16px;
+  line-height: 1.18;
+  text-align: center;
+
+
+}
+
+.notFoundPage__link{
+  margin-top: 184px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  text-align: center;
+
+  color: #3456F3;
+}
+
+@media screen and (max-width: 1024px) {
+  .notFoundPage {
+    outline: solid 2px green;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .notFoundPage {
+    outline: solid 1px blue;
+  }
+}

@@ -10,6 +10,7 @@ function Main(props) {
   return (
     <div className="main">
       <p>Main Container</p>
+      
       <Promo />
       <AboutProject />
       <Techs />

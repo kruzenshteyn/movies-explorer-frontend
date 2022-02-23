@@ -1,6 +1,8 @@
-.main {
-  max-width: 880px;
+.main {  
   outline: dashed 5px rgb(252, 248, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media screen and (max-width: 1024px) {

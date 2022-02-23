@@ -1,23 +1,34 @@
-.header {
+.partHeader {
   margin: 0 auto;
-  margin-top: 45px;
-  
-  border-bottom: 2px solid rgba(84, 84, 84, 0.7);
+  border-bottom: 1px solid #000;
   padding-bottom: 38px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   color: black;
+  width: 100%;
+  padding: 0;
+}
+
+.partHeader__title{
+  
+  margin-bottom: 23px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.22;
+  /* identical to box height */
+  letter-spacing: -0.04em;
 }
 
 @media screen and (max-width: 1024px) {
-  .header {
+  .partHeader {
     max-width: 88.125vw;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .header {
+  .partHeader {
     max-width: 100%;
     margin-top: 28px;
     padding-bottom: 28px;

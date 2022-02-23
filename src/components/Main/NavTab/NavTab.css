@@ -1,5 +1,32 @@
-.navTab {
-  outline: solid 3px red;
+.navTab {  
+  margin: 0 auto;
+  margin-top: 151px;
+  padding-bottom: 30px;
+}
+
+.navTab__button{
+  color: #FFFFFF;
+  min-width: 96px;
+  min-height: 36px;
+  border: none;  
+  box-sizing: border-box;
+  opacity: 1;
+  cursor: pointer;
+  padding: 0;
+  background: #E8E8E8;
+  border-radius: 10px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  margin: 0;
+  margin-right: 10px;
+}
+
+.navTab__button:last-child{
+  margin-right: 0;
 }
 
 @media screen and (max-width: 1024px) {
