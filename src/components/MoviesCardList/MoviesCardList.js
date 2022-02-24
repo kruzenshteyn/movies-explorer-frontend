@@ -1,11 +1,18 @@
 import './MoviesCardList.css';
+import MoviesCard from '../MoviesCard/MoviesCard';
 
 function MoviesCardList(props) {
 
   return (
-    <div className="moviesCardList">
-      <p>MoviesCardList</p>
-    </div>
+    <section className="moviesCardList">
+      <MoviesCard />
+      <MoviesCard />
+      <MoviesCard />
+      <MoviesCard />
+      <MoviesCard />
+      <MoviesCard />
+      <MoviesCard />
+    </section>
   );
 }
 

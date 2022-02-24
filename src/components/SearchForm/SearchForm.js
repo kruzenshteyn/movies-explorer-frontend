@@ -1,7 +1,7 @@
 import './SearchForm.css';
 import imgFind from '../../images/find.png';
 import imgSearch from '../../images/searchIcon.png';
-import imgSlider from '../../images/smalltumb.png';
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 function SearchForm(props) {
     //title, children, btnTitle, isOpen,
@@ -19,7 +19,7 @@ function SearchForm(props) {
           </button>
         </form>
         <div className='searchForm__shortfilm'>
-          <img src={imgSlider} alt='короткометражки' className='searchForm__slider'></img>  
+          <FilterCheckbox />
           <p className='searchForm__text'>Короткометражки</p>
         </div>        
       </div>
