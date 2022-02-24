@@ -1,15 +1,17 @@
-.aboutMe {
+.movies {
   outline: solid 3px red;
+  max-width: 1140px;
+  margin: auto;
 }
 
 @media screen and (max-width: 1024px) {
-  .aboutMe {
+  .movies {
     outline: solid 2px green;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .aboutMe {
+  .movies {
     outline: solid 1px blue;
   }
 }

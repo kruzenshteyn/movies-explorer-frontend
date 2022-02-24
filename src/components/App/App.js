@@ -1,17 +1,24 @@
 import './App.css';
-import '../Header/Header';
-import '../Footer/Footer';
-import Footer from '../Footer/Footer';
-import HeaderMain from '../Main/HeaderMain/HeaderMain';
 
-import Main from '../Main/Main';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+
+import Movies from '../Movies/Movies';
+
+
+/* import Main from '../Main/Main';
+import HeaderMain from '../Main/HeaderMain/HeaderMain'; */
+
 //import NotFoundPage from '../NotFoundPage/NotFoundPage';
+/* 
+<HeaderMain />
+      <Main /> */
 
 function App() {
   return (
     <div className="App">      
-      <HeaderMain />
-      <Main />
+      <Header />      
+      <Movies />
       <Footer />
     </div>
   );

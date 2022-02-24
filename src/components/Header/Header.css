@@ -4,8 +4,10 @@
   
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: left;
+  align-items: center;
   color: black;
+  max-width: 1140px;
 }
 
 .header__logo{
@@ -13,21 +15,44 @@
   height: 38px;
 }
 
-.header__auth{
+.header__link{
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.38;
 
+  text-align: right;
+  text-decoration-line: none;
+  color: black;
+
+  margin-right: 16px;
+}
+
+.header__link_active{
+  font-weight: 500;
 }
 
 .header__button{
-  width: 76px;
+  width: 100px;
   height: 32px;
+
+  background: #F9F9F9;
+  border-radius: 20px;
+  border: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
 }
 
 .header__button_green{
 
 }
 
-.header__link{
-  
+.header__links{
+  margin-left: 44px;
 }
 
 @media screen and (max-width: 1024px) {
