@@ -1,8 +1,6 @@
-.movies {
-  outline: solid 3px red;
+.movies {  
   max-width: 1140px;
   margin: auto;
-
 }
 
 .movies__more{

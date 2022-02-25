@@ -1,11 +1,11 @@
-.moviesCardList {
-  outline: solid 3px red;
-
+.moviesCardList {  
   max-width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, 364px);
-  gap: 30px 2%;  
+  gap: 26px 2%;  
   justify-content: center;
+  margin-top: 80px;
+  padding-bottom: 30px;
 }
 
 @media screen and (max-width: 1024px) {

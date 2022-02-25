@@ -1,0 +1,90 @@
+
+.profile{
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__form{
+  margin: 0 auto;
+  margin-top: 105px;
+  display: flex;
+  flex-direction: column;
+  width: 410px;
+}
+
+.profile__field{
+  margin-top: 7px;
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: solid 1px #E8E8E8;
+  padding-bottom: 5px;
+}
+
+.profile__field:last-child{
+  border-bottom: none;
+}
+
+.profile__label{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.18;
+  text-align: left;
+
+  color: #000000;
+}
+
+.profile__title{
+  margin-top: 74px;
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  /* identical to box height */
+  text-align: center;
+
+  color: #000000;
+}
+
+.profile__input{
+  /* text__COLOR:font-main */
+
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.18;
+  text-align: right;
+
+  color: #000000;
+
+  border: none;
+}
+
+
+
+.profile__button{
+
+  font-size: 13px;
+  line-height: 16px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: transparent;
+
+  border: none;
+}
+
+
+.profile__button_type_edit{
+  margin: 203px auto 0 auto;
+  font-weight: 400;
+  color: #000000;
+}
+.profile__button_type_logout{
+  margin: 15px auto 0 auto;
+  font-weight: 500;
+  color: #FF3055;
+}

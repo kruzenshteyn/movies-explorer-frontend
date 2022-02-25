@@ -1,13 +1,17 @@
 .header {
-  margin: 0 auto;
-  margin-top: 18px;
+  margin: 0 auto;  
   
-  display: flex;
+  display: grid;
+  grid-template-columns: 38px 1fr 100px;
   flex-direction: row;
   justify-content: left;
   align-items: center;
   color: black;
+  width: 100%;
   max-width: 1140px;
+
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
 .header__logo{

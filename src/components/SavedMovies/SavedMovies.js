@@ -1,11 +1,17 @@
+import '../Movies/Movies.css';
+
 import './SavedMovies.css';
+import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 function SavedMovies(props) {
 
   return (
-    <div className="savedMovies">
-      <p>SavedMovies</p>
-    </div>
+    <section className='movies'>     
+      <SearchForm />
+      <MoviesCardList />
+    </section>
+    
   );
 }
 

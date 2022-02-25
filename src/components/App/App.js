@@ -4,6 +4,9 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
+import AuthPage from '../AuthPage/AuthPage';
 
 
 /* import Main from '../Main/Main';
@@ -17,9 +20,10 @@ import HeaderMain from '../Main/HeaderMain/HeaderMain'; */
 function App() {
   return (
     <div className="App">      
-      <Header />      
-      <Movies />
-      <Footer />
+      <AuthPage title= 'Добро пожаловать!' btnTitle='Зарегистрироваться' 
+        text='Уже зарегистрированы?' linkText='Войти' >
+          Form
+      </AuthPage>
     </div>
   );
 }
