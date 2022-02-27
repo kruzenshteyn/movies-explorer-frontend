@@ -1,5 +1,5 @@
 import './AuthPage.css';
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.svg';
 
 function AuthPage(props){
 

@@ -1,12 +1,14 @@
 .headerMain {
   margin: 0 auto;
-  
-  
+    
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   color: black;
   padding: 18px 70px;
+ 
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .headerMain__logo{
@@ -16,6 +18,7 @@
 
 .headerMain__auth{
   display: flex;
+  align-items: center;
 }
 
 .headerMain__button{
@@ -30,6 +33,7 @@
   font-size: 12px;
   line-height: 1.33;
   border: none;
+  text-decoration-line: none;
 }
 
 .headerMain__link{

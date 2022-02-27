@@ -53,15 +53,15 @@
 }
 
 .moviesCard__button_state_unsaved{
-  background-image: url("../../images/save9d.png");
+  background-image: url("../../images/save9d.svg");
 }
 
 .moviesCard__button_state_saved{
-  background-image: url("../../images/save9.png");
+  background-image: url("../../images/save9.svg");
 }
 
 .moviesCard__button_state_close{
-  background-image: url("../../images/close.png");
+  background-image: url("../../images/close.svg");
 }
 
 .moviesCard__image{  

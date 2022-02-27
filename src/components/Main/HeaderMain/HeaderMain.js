@@ -1,7 +1,9 @@
 import './HeaderMain.css';
-import logo from '../../../images/logo.png';
+import logo from '../../../images/logo.svg';
+import { Link } from 'react-router-dom';
 
-//<Link className="popup__link" to="/sign-in">Войти</Link>
+//http://localhost:3000/signin
+//http://localhost:3000/signup
 
 function HeaderMain(props) {
 
@@ -9,8 +11,8 @@ function HeaderMain(props) {
     <header className="headerMain">
       <img src={logo} alt='Лого' className="headerMain__logo"></img>
       <div className='headerMain__auth'>
-        <a href='#' className='headerMain__link'>Регистрация</a>
-        <button className='headerMain__button'>Войти</button>
+        <Link className='headerMain__link' to="/signup">Регистрация</Link>
+        <Link className='headerMain__button' to="/signin">Войти</Link>
       </div>
     </header>
   );

@@ -1,6 +1,6 @@
 import './SearchForm.css';
-import imgFind from '../../images/find.png';
-import imgSearch from '../../images/searchIcon.png';
+import imgFind from '../../images/find.svg';
+import imgSearch from '../../images/searchIcon.svg';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 function SearchForm(props) {

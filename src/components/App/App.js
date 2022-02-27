@@ -1,31 +1,55 @@
 import './App.css';
 
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
+import React from 'react';
+import { Route, Switch, withRouter } from 'react-router-dom';
+
 
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
-import AuthPage from '../AuthPage/AuthPage';
+import Login from '../Login/Login';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import Main from '../Main/Main';
+import Register from '../Register/Register';
 
-
-/* import Main from '../Main/Main';
-import HeaderMain from '../Main/HeaderMain/HeaderMain'; */
-
-//import NotFoundPage from '../NotFoundPage/NotFoundPage';
 /* 
-<HeaderMain />
-      <Main /> */
+  http://localhost:3000/
+  http://localhost:3000/movies
+  http://localhost:3000/saved-movies
+  http://localhost:3000/profile
+  http://localhost:3000/signin
+  http://localhost:3000/signup
+  http://localhost:3000/notFound
+*/
 
 function App() {
   return (
-    <div className="App">      
-      <AuthPage title= 'Добро пожаловать!' btnTitle='Зарегистрироваться' 
-        text='Уже зарегистрированы?' linkText='Войти' >
-          Form
-      </AuthPage>
+    <div className="App">
+      <Switch>
+        <Route exact path="/">
+          <Main />
+        </Route>        
+        <Route path="/movies">
+          <Movies />
+        </Route>
+        <Route path="/saved-movies">
+          <SavedMovies />
+        </Route>
+        <Route path="/profile">
+          <Profile />
+        </Route>
+        <Route path="/signin">
+          <Login />
+        </Route>
+        <Route path="/signup">
+          <Register />
+        </Route>
+        <Route path="*">
+          <NotFoundPage />
+        </Route>
+      </Switch>
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);

@@ -1,16 +1,19 @@
 import './Header.css';
-import logo from '../../images/logo.png';
+import logo from '../../images/logo.svg';
+import { NavLink } from 'react-router-dom';
 
 function Header(props) {
 
   return (
     <header className="header">
-      <img src={logo} alt='Лого' className="header__logo"></img>
+      <NavLink to="/">
+        <img src={logo} alt='Лого' className="header__logo"></img>
+      </NavLink>
       <div className='header__links'>
-        <a href='#' className='header__link header__link_active'>Фильмы</a>
-        <a href='#' className='header__link'>Сохранённые фильмы</a>
+        <NavLink className='header__link' activeClassName='header__link_active' to="/movies">Фильмы</NavLink>
+        <NavLink className='header__link' activeClassName='header__link_active' to="/saved-movies">Сохранённые фильмы</NavLink>        
       </div>      
-      <button type='button' className='header__button'>Аккаунт</button>
+      <NavLink className='header__button' to="/profile">Аккаунт</NavLink>
     </header>
   );
 }

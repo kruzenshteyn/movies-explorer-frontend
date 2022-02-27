@@ -1,5 +1,7 @@
 .footer {
   padding: 80px 70px 20px 70px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .footer__info{
@@ -16,12 +18,14 @@
 .footer__container{
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .footer__list{
   list-style-type: none;
   padding: 0;
   display: flex;
+  margin: 0;
 }
 
 .footer__item{
@@ -43,6 +47,7 @@
   font-size: 13px;
   line-height: 1.23;
   color: #000000;
+  margin: 0;
 }
 
 @media screen and (max-width: 320px) {

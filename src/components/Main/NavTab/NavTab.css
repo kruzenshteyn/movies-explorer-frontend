@@ -2,14 +2,19 @@
   margin: 0 auto;
   margin-top: 151px;
   padding-bottom: 30px;
+  display: flex;
+  flex-direction: row;
 }
 
 .navTab__button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #FFFFFF;
   min-width: 96px;
   min-height: 36px;
   border: none;  
-  box-sizing: border-box;
+  
   opacity: 1;
   cursor: pointer;
   padding: 0;
@@ -23,6 +28,7 @@
 
   margin: 0;
   margin-right: 10px;
+  text-decoration-line: none;
 }
 
 .navTab__button:last-child{

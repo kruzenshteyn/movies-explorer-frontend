@@ -5,7 +5,8 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto; 
-  padding: 100px 70px
+  padding: 85px 70px;
+  background-color: #F5F5F5;
 }
 
 .techs__title{
@@ -14,6 +15,8 @@
   line-height: 1.16;
   text-align: center;
   letter-spacing: -0.04em;
+  margin-top: 90px;
+  margin-bottom: 0;
 }
 
 .techs__about{
@@ -23,15 +26,16 @@
   line-height: 1.43;
   text-align: center;
   letter-spacing: -0.04em;
+  margin-top: 26px;
+  margin-bottom: 0;
 }
 
 .techs__list{
   display: flex;
   flex-direction: row;
-  list-style-type: none;
-  margin: 0;
+  list-style-type: none;  
   margin-top: 100px;
-  padding: 0;
+  padding: 0;  
 }
 
 .techs__item{

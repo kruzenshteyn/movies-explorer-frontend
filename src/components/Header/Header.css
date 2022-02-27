@@ -1,6 +1,5 @@
 .header {
-  margin: 0 auto;  
-  
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 38px 1fr 100px;
   flex-direction: row;
@@ -9,7 +8,7 @@
   color: black;
   width: 100%;
   max-width: 1140px;
-
+  width: 100%;
   padding-top: 18px;
   padding-bottom: 18px;
 }
@@ -23,11 +22,9 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 1.38;
-
   text-align: right;
   text-decoration-line: none;
   color: black;
-
   margin-right: 16px;
 }
 
@@ -38,7 +35,6 @@
 .header__button{
   width: 100px;
   height: 32px;
-
   background: #F9F9F9;
   border-radius: 20px;
   border: none;
@@ -49,10 +45,7 @@
   align-items: center;
   justify-content: center;
   color: #000000;
-}
-
-.header__button_green{
-
+  text-decoration-line: none;
 }
 
 .header__links{
