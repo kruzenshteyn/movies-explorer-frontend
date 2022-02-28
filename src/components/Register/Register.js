@@ -24,7 +24,7 @@ function Login(props){
   return(
     <AuthPage title= 'Добро пожаловать!' btnTitle='Зарегистрироваться' 
         text='Уже зарегистрированы? ' linkText='Войти' link='/signin' handleSubmit={handleSubmit}>
-      <div className='login'>
+      <div className='register'>
         <div className='authPage__fields'>
           <p className='authPage__label'>Имя</p>
           <input type="text" className="authPage__input" value={values.name || ''} 

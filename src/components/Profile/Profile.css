@@ -2,6 +2,8 @@
 .profile{
   display: flex;
   flex-direction: column;
+  width: 89.0625%;
+  margin: 0 auto;
 }
 
 .profile__form{
@@ -9,7 +11,8 @@
   margin-top: 105px;
   display: flex;
   flex-direction: column;
-  width: 410px;
+  max-width: 410px;
+  width: 100%;
 }
 
 .profile__field{
@@ -40,10 +43,9 @@
   margin-bottom: 0;
   font-weight: 500;
   font-size: 24px;
-  line-height: 29px;
+  line-height: 1.21;
   /* identical to box height */
   text-align: center;
-
   color: #000000;
 }
 
@@ -87,4 +89,43 @@
   margin: 15px auto 0 auto;
   font-weight: 500;
   color: #FF3055;
+}
+
+@media screen and (max-width: 768px) {
+  .profile{
+    width: 92.1875%;
+  }  
+
+  .profile__title{
+    margin-top: 232px;
+  }
+
+  .profile__form{
+    margin-top: 80px;
+  }
+
+  .profile__button_type_edit{
+    margin-top: 190px;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  .profile{
+    width: 92.1875%;
+  }  
+
+  .profile__title{
+    margin-top: 67px;
+  }
+
+  .profile__form{
+    margin-top: 62px;
+    max-width: 260px;
+  }
+
+  .profile__button_type_edit{
+    margin-top: 360px;
+  }
+
 }

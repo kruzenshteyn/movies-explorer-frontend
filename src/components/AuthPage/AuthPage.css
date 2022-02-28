@@ -1,16 +1,20 @@
 .authPage{
   margin: 0 auto;
+  width: 100%;
   max-width: 396px; 
+  display: flex;
+  flex-direction: column;
 }
 
 .authPage__logo{
   width: 38px;
   height: 38px;
-  margin-top: 70px;
+  margin-top: 70px;  
 }
 
 .authPage__content{
   margin: 0 auto;
+  width: 100%;
 }
 
 .authPage__title{
@@ -20,7 +24,8 @@
   font-size: 24px;
   line-height: 1.21;
   color: #000000;
-  padding-bottom: 40px;
+  padding-bottom: 41px;
+  text-align: left;
 }
 
 .authPage__form{
@@ -28,8 +33,7 @@
   flex-direction: column;
 }
 
-.authPage__button{
-    
+.authPage__button{    
   font-weight: 500;
   font-size: 14px;
   line-height: 1.21;
@@ -87,4 +91,40 @@
   font-size: 10px;
   line-height: 1.2;
   color: #FF3055;
+}
+
+@media screen and (max-width: 768px) {
+  .authPage {
+    margin-top: 162px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .authPage{
+    margin-top: 56px;
+  }
+
+  .authPage__logo {
+    margin-top: 1px;
+    margin: 0 auto;
+  }
+
+  .authPage__title{
+    margin-top: 50px;
+    padding-bottom: 80px;
+    text-align: center;
+  }
+
+  .authPage__content{
+    max-width: 260px;
+    width: 100%;
+  }
+
+  .authPage__button{  
+    font-size: 12px;
+  }
+
+  .authPage__text{
+    font-size: 12px;    
+  }
 }

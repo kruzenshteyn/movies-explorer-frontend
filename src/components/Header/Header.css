@@ -9,7 +9,7 @@
   width: 100%;
   max-width: 1140px;
   width: 100%;
-  padding-top: 18px;
+  padding-top: 16px;
   padding-bottom: 18px;
 }
 
@@ -46,22 +46,45 @@
   justify-content: center;
   color: #000000;
   text-decoration-line: none;
+  visibility: visible;
 }
 
 .header__links{
   margin-left: 44px;
 }
 
-@media screen and (max-width: 1024px) {
-  .header {
-    max-width: 88.125vw;
+.header__menu{  
+  display: none;
+  background-image: url('../../images/menu.svg');
+  width: 44px;
+  height: 44px;
+  border: none;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+
+  .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .header__links{
+    display: none;
+  }
+
+  .header__button {
+    display: none;
+  }
+
+  .header__menu{
+    display: block;
   }
 }
 
 @media screen and (max-width: 320px) {
   .header {
-    max-width: 100%;
-    margin-top: 28px;
-    padding-bottom: 28px;
+    
   }
 }

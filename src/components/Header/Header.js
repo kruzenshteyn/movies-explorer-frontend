@@ -14,6 +14,7 @@ function Header(props) {
         <NavLink className='header__link' activeClassName='header__link_active' to="/saved-movies">Сохранённые фильмы</NavLink>        
       </div>      
       <NavLink className='header__button' to="/profile">Аккаунт</NavLink>
+      <button type='button' className='header__menu'></button>
     </header>
   );
 }
