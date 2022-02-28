@@ -36,6 +36,7 @@
   color: #000000;
   margin: 0;
   margin-right: 20px;
+  text-decoration-line: none;
 }
 
 .footer__item:last-child{

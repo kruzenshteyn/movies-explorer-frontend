@@ -2,6 +2,7 @@ import './AboutMe.css';
 import PartHeader from '../PartHeader/PartHeader';
 import Portfolio from '../Portfolio/Portfolio';
 import photo from '../../../images/photo.png';
+import { Link } from 'react-router-dom';
 
 function AboutMe(props) {
 
@@ -18,10 +19,10 @@ function AboutMe(props) {
             2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-
             разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
-          <ul className='aboutMe__links'>
-            <li className='aboutMe__link'>Facebook</li>
-            <li className='aboutMe__link'>Github</li>
-          </ul>
+          <nav className='aboutMe__links'>
+            <a className='aboutMe__link' href="https://www.facebook.com/">Facebook</a>
+            <a className='aboutMe__link' href="https://github.com/">Github</a>
+          </nav>
         </div>
         <img src={photo} className='aboutMe__photo' alt='Фото'></img>
       </div>
