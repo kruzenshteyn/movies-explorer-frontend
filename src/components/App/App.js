@@ -11,6 +11,7 @@ import Login from '../Login/Login';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Main from '../Main/Main';
 import Register from '../Register/Register';
+import Popup from '../Popup/Popup'
 
 /* 
   http://localhost:3000/
@@ -43,6 +44,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <Register />
+        </Route>
+        <Route path="/menu">
+          <Popup />
         </Route>
         <Route path="*">
           <NotFoundPage />

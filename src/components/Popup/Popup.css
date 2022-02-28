@@ -1,34 +1,36 @@
-
-
-.popup {
-  background-color: #000000;
+.popup {  
+  background-size: cover;  
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .popup__container{
-  position: absolute;
-  top:0;
-  right: 0;
   margin-right: 0;
   display: flex;
-
-  flex-direction: column;
-  
+  flex-direction: column;  
   align-items: center;
   color: black;
   width: 100%;
   max-width: 520px;
-
+  height: 100%;
   padding-top: 18px;
   padding-bottom: 18px;
+  background-color: white;
 }
 
 .popup__close{
   position: absolute;
-  right: 46px;
-  top: 23px;
+  right: 28px;
+  top: 26px;
   width: 23px;
   height: 23px;
-  background-image: url('../../images/closeMenu.png');
+  background: center center no-repeat url('../../images/closeMenu.svg');
   background-color: transparent;
   padding: 0;
   margin: 0;
@@ -36,7 +38,7 @@
 }
 
 .popup__links{
-  margin-top: 130px;  
+  margin-top: 113px;  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,11 +48,9 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 1.21;
-
   text-align: right;
   text-decoration-line: none;
   color: black;
-
   margin-top: 28px;
 }
 
@@ -60,10 +60,8 @@
 
 .popup__button{
   margin-top: 621px;
-
   width: 100px;
   height: 32px;
-
   background: #F9F9F9;
   border-radius: 20px;
   border: none;
@@ -74,19 +72,24 @@
   align-items: center;
   justify-content: center;
   color: #000000;
+  text-decoration-line: none;
 }
 
-
-
-
-@media screen and (max-width: 1024px) {
-  .popup {
-    outline: solid 2px green;
+@media screen and (max-width: 320px) {  
+  .popup__close{
+    right: 18px;
+    top: 18px;
   }
-}
+  
+  .popup__link{
+    margin-top: 25px;
+  }
 
-@media screen and (max-width: 320px) {
-  .popup {
-    outline: solid 1px blue;
+  .popup__links{
+    margin-top: 101px;
+  }
+
+  .popup__button{
+    margin-top: 443px;
   }
 }
