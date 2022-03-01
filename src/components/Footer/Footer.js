@@ -8,8 +8,8 @@ function Footer() {
         <p className="footer__copyright">&copy; {new Date().getFullYear()}. Алексей Баев</p>
         <ul className='footer__list'>
           <a className='footer__item' href="https://practicum.yandex.ru/">Яндекс.Практикум</a>
-          <a className='footer__item' href="https://www.facebook.com/">Facebook</a>         
           <a className='footer__item' href="https://github.com/">Github</a>
+          <a className='footer__item' href="https://www.facebook.com/">Facebook</a>
         </ul>
       </div>
     </footer>
