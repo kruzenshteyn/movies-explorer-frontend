@@ -1,12 +1,10 @@
 .headerMain {
-  margin: 0 auto;
-    
+  margin: 0 auto;    
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   color: black;
-  padding: 18px 70px;
- 
+  padding: 18px 70px; 
   width: 100%;
   box-sizing: border-box;
 }
@@ -48,16 +46,25 @@
   text-decoration-line: none;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
   .headerMain {
-    max-width: 88.125vw;
+    padding: 18px 30px; 
   }
 }
 
 @media screen and (max-width: 320px) {
   .headerMain {
-    max-width: 100%;
-    margin-top: 28px;
-    padding-bottom: 28px;
+    padding: 18px 15px;
+  }
+
+  .headerMain__button{
+    font-size: 10px;
+    width: 54px;
+    height: 26px;
+  }
+
+  .headerMain__link{
+    font-size: 10px;
+    margin-right: 14px;
   }
 }

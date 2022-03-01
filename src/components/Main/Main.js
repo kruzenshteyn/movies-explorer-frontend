@@ -6,6 +6,13 @@ import Techs from './Techs/Techs';
 import HeaderMain from './HeaderMain/HeaderMain';
 import Footer from '../Footer/Footer';
 
+/* 
+
+      
+      <Techs />
+      <AboutMe />
+      <Footer />  
+*/
 
 function Main(props) {
 
@@ -15,8 +22,6 @@ function Main(props) {
       <Promo />
       <AboutProject />
       <Techs />
-      <AboutMe />
-      <Footer />        
     </div>
   );
 }

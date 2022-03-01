@@ -1,36 +1,39 @@
 .partHeader {
   margin: 0 auto;
   border-bottom: 1px solid #000;
-  padding-bottom: 38px;
+  padding-bottom: 23px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   color: black;
-  width: 100%;
-  padding: 0;
+  width: 100%;  
 }
 
-.partHeader__title{
-  
-  margin-bottom: 23px;
+.partHeader__title{  
+  margin-bottom: 0px;
   font-style: normal;
   font-weight: 400;
   font-size: 22px;
   line-height: 1.22;
-  /* identical to box height */
   letter-spacing: -0.04em;
 }
 
 @media screen and (max-width: 1024px) {
   .partHeader {
-    max-width: 88.125vw;
+    
   }
 }
 
 @media screen and (max-width: 320px) {
   .partHeader {
     max-width: 100%;
-    margin-top: 28px;
+    margin-top: 0px;
     padding-bottom: 28px;
   }
+
+  .partHeader__title{
+    font-size: 18px;
+    line-height: 1.21;
+  }
+
 }

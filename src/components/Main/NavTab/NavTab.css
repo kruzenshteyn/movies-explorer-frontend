@@ -1,6 +1,5 @@
 .navTab {  
-  margin: 0 auto;
-  margin-top: 151px;
+  margin: 0 auto;  
   padding-bottom: 30px;
   display: flex;
   flex-direction: row;
@@ -35,14 +34,17 @@
   margin-right: 0;
 }
 
-@media screen and (max-width: 1024px) {
-  .navTab {
-    outline: solid 2px green;
-  }
-}
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 500px) {
   .navTab {
-    outline: solid 1px blue;
+    padding-bottom: 17px;
+  }
+
+  .navTab__button{
+    min-width: 82px;
+    min-height: 26px;
+    margin-right: 6px;
+    font-size: 10px;
+    line-height: 1.6;
   }
 }
