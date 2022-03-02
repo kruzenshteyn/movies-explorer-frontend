@@ -6,7 +6,9 @@ function AuthPage(props){
 
   return(
     <div className='authPage' >
-      <img src={logo} alt='Логотип' className='authPage__logo'></img>
+      <Link to="/">
+        <img src={logo} alt='Логотип' className='authPage__logo'></img>
+      </Link>
       <div className="authPage__content">        
         <h3 className="authPage__title">{props.title}</h3>
         <form className="authPage__form" onSubmit={props.handleSubmit}>

@@ -12,6 +12,10 @@
   margin-top: 70px;  
 }
 
+.authPage__logo:hover{
+  opacity: 0.5;
+}
+
 .authPage__content{
   margin: 0 auto;
   width: 100%;
@@ -45,6 +49,10 @@
   height: 45px;
 }
 
+.authPage__button:hover{
+  opacity: 0.5;
+}
+
 .authPage__text{
   margin-top: 16px;
   font-weight: 400;
@@ -57,6 +65,10 @@
 .authPage__link{
   color: #3456F3;
   text-decoration-line: none;
+}
+
+.authPage__link:hover{
+  opacity: 0.5;
 }
 
 .authPage__fields{  

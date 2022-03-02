@@ -37,6 +37,10 @@
   border: none;
 }
 
+.popup__close:hover{
+  opacity: 0.5;
+}
+
 .popup__links{
   margin-top: 113px;  
   display: flex;
@@ -52,6 +56,10 @@
   text-decoration-line: none;
   color: black;
   margin-top: 28px;
+}
+
+.popup__link:hover{
+  opacity: 0.5;
 }
 
 .popup__link_active{
@@ -73,6 +81,10 @@
   justify-content: center;
   color: #000000;
   text-decoration-line: none;
+}
+
+.popup__button:hover{
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 320px) {  

@@ -66,6 +66,10 @@
   color: #000;
 }
 
+.aboutMe__link:hover{
+  opacity: 0.5;
+}
+
 .aboutMe__photo{
   display: flex;
   max-width: 270px;

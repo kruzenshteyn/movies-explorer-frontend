@@ -18,6 +18,11 @@
 .header__logo{
   width: 38px;
   height: 38px;
+  opacity: 1;
+}
+
+.header__logo:hover{
+  opacity: 0.5;
 }
 
 .header__link{
@@ -28,6 +33,11 @@
   text-decoration-line: none;
   color: black;
   margin-right: 16px;
+  opacity: 1;
+}
+
+.header__link:hover{
+  opacity: 0.5;
 }
 
 .header__link_active{
@@ -49,6 +59,11 @@
   color: #000000;
   text-decoration-line: none;
   visibility: visible;
+  opacity: 1;
+}
+
+.header__button:hover{
+  opacity: 0.5;
 }
 
 .header__links{

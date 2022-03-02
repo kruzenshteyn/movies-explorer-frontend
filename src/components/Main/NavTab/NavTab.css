@@ -30,6 +30,10 @@
   text-decoration-line: none;
 }
 
+.navTab__button:hover{
+  opacity: 0.5;
+}
+
 .navTab__button:last-child{
   margin-right: 0;
 }
