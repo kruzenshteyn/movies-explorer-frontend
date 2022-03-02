@@ -1,8 +1,8 @@
 .searchForm {  
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding: 69px 70px 70px 70px;
   border-bottom: solid 1px #E8E8E8;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .searchForm__content{

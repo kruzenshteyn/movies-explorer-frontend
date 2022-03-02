@@ -2,6 +2,7 @@ import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 function Movies(props) {
 
@@ -13,6 +14,7 @@ function Movies(props) {
       <div className='movies__more'>
         <button type='button' className='movies__getmore-button'>Ещё</button>
       </div>
+      <Footer />
     </section>
     
   );

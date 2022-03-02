@@ -1,15 +1,14 @@
-.movies {  
-  max-width: 1140px;
-  margin: auto;
+.movies {
+  margin: 0 auto;
 }
 
 .movies__more{
-  padding-top: 50px;
-  padding-bottom: 80px;
+  padding-top: 48px;
+  padding-bottom: 78px;
 }
 
 .movies__getmore-button{
-  margin: auto;
+  margin: 0 auto;
   width: 100%;
   max-width: 320px;
   height: 36px;  
