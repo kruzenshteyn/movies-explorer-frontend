@@ -9,6 +9,10 @@ import Footer from '../Footer/Footer';
 
 function Main(props) {
 
+/* 
+
+*/
+
   return (
     <div className="main">
       <HeaderMain />
@@ -16,7 +20,7 @@ function Main(props) {
       <AboutProject />
       <Techs />
       <AboutMe />
-      <Footer />  
+      <Footer /> 
     </div>
   );
 }
