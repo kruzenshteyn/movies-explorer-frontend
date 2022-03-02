@@ -8,7 +8,7 @@ function Movies(props) {
 
   return (
     <section className='movies'>  
-      <Header />   
+      <Header />
       <SearchForm />
       <MoviesCardList />
       <div className='movies__more'>

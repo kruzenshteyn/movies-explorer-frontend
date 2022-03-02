@@ -1,8 +1,7 @@
-.moviesCard {
-  overflow: hidden;
+.moviesCard {  
   background: #FDFDFD;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
-  margin: 0;
+  margin: 0;  
 }
 
 .moviesCard__caption{
@@ -11,6 +10,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 14px;
+  box-sizing: border-box;
 }
 
 .moviesCard__info{
@@ -65,7 +65,7 @@
 }
 
 .moviesCard__image{  
-  min-width: 100%;
+  width: 100%;
   min-height: 203px;
   object-fit: cover;
   cursor: pointer;
@@ -73,14 +73,19 @@
 }
 
 
-@media screen and (max-width: 1024px) {
-  .moviesCard {
-    outline: solid 2px green;
+@media screen and (max-width: 768px) {
+  
+  .moviesCard__image{  
+    width: 100%;
+    min-height: 190px;
   }
 }
 
-@media screen and (max-width: 320px) {
-  .moviesCard {
-    outline: solid 1px blue;
+@media screen and (max-width: 500px) {
+  
+
+  .moviesCard__image{  
+    width: 100%;
+    min-height: 168px;
   }
 }

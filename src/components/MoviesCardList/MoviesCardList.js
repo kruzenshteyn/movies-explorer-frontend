@@ -9,13 +9,6 @@ function MoviesCardList(props) {
       <MoviesCard />
       <MoviesCard />
       <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
     </section>
   );
 }

@@ -1,15 +1,7 @@
 .savedMovies {
-  outline: solid 3px red;
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
-@media screen and (max-width: 1024px) {
-  .savedMovies {
-    outline: solid 2px green;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .savedMovies {
-    outline: solid 1px blue;
-  }
-}

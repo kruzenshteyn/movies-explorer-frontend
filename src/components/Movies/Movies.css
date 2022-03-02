@@ -1,4 +1,7 @@
 .movies {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -12,7 +15,6 @@
   width: 100%;
   max-width: 320px;
   height: 36px;  
-  
   background-color: transparent;
   font-weight: 500;
   font-size: 12px;
@@ -22,22 +24,18 @@
   text-align: center;
   justify-content: center;
   border-radius: 3px;
-
   color: #000000;
-
   border: solid 1px #E8E8E8;
-
-
 }
 
-@media screen and (max-width: 1024px) {
-  .movies {
-    outline: solid 2px green;
+@media screen and (max-width: 500px) {
+  
+  .movies__getmore-button{
+    margin: 0 auto;
+    width: 75%;    
   }
-}
 
-@media screen and (max-width: 320px) {
-  .movies {
-    outline: solid 1px blue;
+  .movies__more{
+    padding-bottom: 104px;
   }
 }

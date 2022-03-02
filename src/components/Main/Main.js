@@ -9,9 +9,7 @@ import Footer from '../Footer/Footer';
 
 function Main(props) {
 
-/* 
 
-*/
 
   return (
     <div className="main">
@@ -20,7 +18,7 @@ function Main(props) {
       <AboutProject />
       <Techs />
       <AboutMe />
-      <Footer /> 
+      <Footer />
     </div>
   );
 }
