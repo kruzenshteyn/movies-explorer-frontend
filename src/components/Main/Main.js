@@ -9,15 +9,15 @@ import Footer from '../Footer/Footer';
 
 function Main(props) {
 
-
-
   return (
-    <div className="main">
+    <div>
       <HeaderMain />
-      <Promo />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
+      <main className="main">
+        <Promo />
+        <AboutProject />
+        <Techs />
+        <AboutMe />
+      </main>      
       <Footer />
     </div>
   );

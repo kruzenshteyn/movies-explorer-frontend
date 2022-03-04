@@ -33,6 +33,7 @@
   border: none;
   text-decoration-line: none;
   opacity: 1;
+  color: #000;
 }
 
 .headerMain__button:hover{

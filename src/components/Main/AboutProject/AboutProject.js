@@ -4,7 +4,7 @@ import PartHeader from '../PartHeader/PartHeader';
 function AboutProject(props) {
 
   return (
-    <div className="aboutProject">
+    <section className="aboutProject">
       <PartHeader title="О проекте" />
       <div className='aboutProject__container'>
         <div className='aboutProject__description'>
@@ -28,7 +28,7 @@ function AboutProject(props) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

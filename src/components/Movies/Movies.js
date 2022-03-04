@@ -7,15 +7,17 @@ import Footer from '../Footer/Footer';
 function Movies(props) {
 
   return (
-    <section className='movies'>  
+    <div className='movies'>  
       <Header />
-      <SearchForm />
-      <MoviesCardList />
-      <div className='movies__more'>
-        <button type='button' className='movies__getmore-button'>Ещё</button>
-      </div>
+      <main>
+        <SearchForm />
+        <MoviesCardList />
+        <div className='movies__more'>
+          <button type='button' className='movies__getmore-button'>Ещё</button>
+        </div>
+      </main>
       <Footer />
-    </section>
+    </div>
     
   );
 }

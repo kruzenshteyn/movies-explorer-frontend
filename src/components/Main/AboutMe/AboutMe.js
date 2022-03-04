@@ -2,12 +2,11 @@ import './AboutMe.css';
 import PartHeader from '../PartHeader/PartHeader';
 import Portfolio from '../Portfolio/Portfolio';
 import photo from '../../../images/photo.png';
-import { Link } from 'react-router-dom';
 
 function AboutMe(props) {
 
   return (
-    <div className="aboutMe">
+    <section className="aboutMe">
       <PartHeader title='Студент' />
       <div className='aboutMe__container'>
         <div className='aboutMe__info'>
@@ -20,14 +19,14 @@ function AboutMe(props) {
             разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
           <nav className='aboutMe__links'>
-            <a className='aboutMe__link' href="https://www.facebook.com/">Facebook</a>
-            <a className='aboutMe__link' href="https://github.com/">Github</a>
+            <a className='aboutMe__link' target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/">Facebook</a>
+            <a className='aboutMe__link' target="_blank" rel="noopener noreferrer" href="https://github.com/">Github</a>
           </nav>
         </div>
         <img src={photo} className='aboutMe__photo' alt='Фото'></img>
       </div>
       <Portfolio />
-    </div>
+    </section>
   );
 }
 

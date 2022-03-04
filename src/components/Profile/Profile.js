@@ -20,11 +20,10 @@ function Profile(props){
     }))
   }
 
-  return(
-    <>
-      
-      <div className="profile">
+  return(    
+    <div className="profile">
       <Header />
+      <main>
         <h2 className="profile__title">Привет, {title}!</h2>
         <form className="profile__form" onSubmit={handleSubmit}>
           <div className='profile__field'>
@@ -42,9 +41,8 @@ function Profile(props){
           <button type="submit"  className="profile__button profile__button_type_edit">Редактировать</button>
           <button type="button"  className="profile__button profile__button_type_logout">Выйти из аккаунта</button>
         </form>
-      </div>
-    </>    
-    
+      </main>
+    </div>    
   );
 }
 

@@ -7,12 +7,14 @@ import Footer from '../Footer/Footer';
 function SavedMovies(props) {
 
   return (
-    <section className='savedMovies'>
+    <div className='savedMovies'>
       <Header />  
-      <SearchForm />
-      <MoviesCardList />
+      <main>
+        <SearchForm />
+        <MoviesCardList />
+      </main>
       <Footer />
-    </section>
+    </div>
     
   );
 }

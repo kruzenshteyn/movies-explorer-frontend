@@ -1,10 +1,10 @@
 .aboutMe {
   width: 100%;
-  max-width: 1140px;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto; 
+  margin: 0; 
   padding: 94px 70px;
   padding-bottom: 102px;  
   box-sizing: border-box;
@@ -78,7 +78,6 @@
 
 @media screen and (max-width: 768px) {
   .aboutMe {
-    outline: solid 2px green;
     max-width: 768px;
     box-sizing: border-box;
     padding: 74px 50px 70px 50px;  
@@ -115,7 +114,6 @@
 
 @media screen and (max-width: 600px) {
   .aboutMe {
-    outline: solid 1px blue;
     padding: 48px 14px 70px 14px;
   }
 

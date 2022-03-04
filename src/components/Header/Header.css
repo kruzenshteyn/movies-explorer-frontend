@@ -77,6 +77,11 @@
   height: 44px;
   border: none;
   background-color: transparent;
+  cursor: pointer;
+}
+
+.header__menu:hover{
+  opacity: 0.5;
 }
 
 @media screen and (max-width: 768px) {

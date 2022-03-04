@@ -8,6 +8,11 @@
   right: 0;
   display: flex;
   justify-content: flex-end;
+  visibility: hidden;
+}
+
+.popup_opened{
+  visibility: visible;
 }
 
 .popup__container{

@@ -7,9 +7,9 @@ function Footer() {
       <div className='footer__container'>
         <p className="footer__copyright">&copy; {new Date().getFullYear()}. Алексей Баев</p>
         <ul className='footer__list'>
-          <a className='footer__item' href="https://practicum.yandex.ru/">Яндекс.Практикум</a>
-          <a className='footer__item' href="https://github.com/">Github</a>
-          <a className='footer__item' href="https://www.facebook.com/">Facebook</a>
+          <a className='footer__item' target="_blank" rel="noopener noreferrer" href="https://practicum.yandex.ru/">Яндекс.Практикум</a>
+          <a className='footer__item' target="_blank" rel="noopener noreferrer" href="https://github.com/">Github</a>
+          <a className='footer__item' target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/">Facebook</a>
         </ul>
       </div>
     </footer>

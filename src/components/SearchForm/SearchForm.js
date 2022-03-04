@@ -4,9 +4,8 @@ import imgSearch from '../../images/searchIcon.svg';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 function SearchForm(props) {
-    //title, children, btnTitle, isOpen,
   return(
-    <div className='searchForm' >
+    <section className='searchForm' >
       <div className="searchForm__content">
         <img src={imgSearch} alt='найти' className='searchForm__find-icon'></img>        
         <form className='searchForm__form'>
@@ -23,7 +22,7 @@ function SearchForm(props) {
           <p className='searchForm__text'>Короткометражки</p>
         </div>        
       </div>
-    </div>
+    </section>
   )
 }
 
