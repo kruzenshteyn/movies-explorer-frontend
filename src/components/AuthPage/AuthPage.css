@@ -1,0 +1,143 @@
+.authPage{
+  margin: 0 auto;
+  width: 100%;
+  max-width: 396px; 
+  display: flex;
+  flex-direction: column;
+}
+
+.authPage__logo{
+  width: 38px;
+  height: 38px;
+  margin-top: 70px;  
+}
+
+.authPage__logo:hover{
+  opacity: 0.5;
+}
+
+.authPage__content{
+  margin: 0 auto;
+  width: 100%;
+}
+
+.authPage__title{
+  margin-top: 38px;
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.21;
+  color: #000000;
+  padding-bottom: 41px;
+  text-align: left;
+}
+
+.authPage__form{
+  display: flex;
+  flex-direction: column;
+}
+
+.authPage__button{    
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  text-align: center;
+  color: #FFFFFF;
+  background: #3456F3;
+  border-radius: 3px;
+  border: none;
+  height: 45px;
+}
+
+.authPage__button:hover{
+  opacity: 0.5;
+}
+
+.authPage__text{
+  margin-top: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  text-align: center;
+  color: #A0A0A0;
+}
+
+.authPage__link{
+  color: #3456F3;
+  text-decoration-line: none;
+}
+
+.authPage__link:hover{
+  opacity: 0.5;
+}
+
+.authPage__fields{  
+  border-bottom: solid 1px #E8E8E8;
+  margin-top: 24px;  
+}
+
+.authPage__fields:first-child{
+  margin-top: 0;
+}
+
+.authPage__label{
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #A0A0A0;
+  margin: 0;  
+}
+
+.authPage__input{
+  width: 100%;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #000000;
+  border: none;
+  margin: 5px 0 8px 0;
+}
+
+.authPage__error{
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.2;
+  color: #FF3055;
+}
+
+@media screen and (max-width: 768px) {
+  .authPage {
+    margin-top: 162px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .authPage{
+    margin-top: 56px;
+    align-items: center;
+  }
+
+  .authPage__logo {
+    margin-top: 1px;
+    margin: 0 auto;
+  }
+
+  .authPage__title{
+    margin-top: 50px;
+    padding-bottom: 80px;
+    text-align: center;
+  }
+
+  .authPage__content{
+    max-width: 260px;
+    width: 100%;
+  }
+
+  .authPage__button{  
+    font-size: 12px;
+  }
+
+  .authPage__text{
+    font-size: 12px;    
+  }
+}
