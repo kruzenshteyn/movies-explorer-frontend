@@ -10,8 +10,8 @@ function SearchForm(props) {
         <img src={imgSearch} alt='найти' className='searchForm__find-icon'></img>        
         <form className='searchForm__form'>
           <input
-          type="text" className="searchForm__input" id="caption" placeholder="Фильм"
-          required minLength="1" maxLength="30" name = "caption"        
+            type="text" className="searchForm__input" id="caption" placeholder="Фильм"
+            required minLength="1" maxLength="30" name = "caption"        
           />            
           <button type="submit" className='searchForm__button'>
             <img src={imgFind} alt='найти' className='searchForm__search-icon'></img>  

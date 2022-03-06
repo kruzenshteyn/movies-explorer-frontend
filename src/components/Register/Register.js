@@ -28,17 +28,20 @@ function Login(props){
         <div className='authPage__fields'>
           <p className='authPage__label'>Имя</p>
           <input type="text" className="authPage__input" value={values.name || ''} 
-            required minLength="2" maxLength="40" name="name" onChange={handleChange}/>          
+            required minLength="2" maxLength="40" name="name" onChange={handleChange}
+            placeholder="Имя" />          
         </div>
         <div className='authPage__fields'>
           <p className='authPage__label'>E-mail</p>
           <input type="text" className="authPage__input" value={values.email || ''} 
-            required minLength="2" maxLength="40" name="email" onChange={handleChange}/>          
+            required minLength="2" maxLength="40" name="email" onChange={handleChange}
+            placeholder="pochta@yandex.ru" />          
         </div>
         <div className='authPage__fields'>
           <p className='authPage__label'>Пароль</p>
           <input type="password" className="authPage__input" value={values.password || ''} 
-            required minLength="5" maxLength="40" name="password" onChange={handleChange}/>          
+            required minLength="5" maxLength="40" name="password" onChange={handleChange}
+            placeholder="Пароль" />          
         </div>        
         <span className="authPage__error" id="authPage-error">Что-то пошло не так...</span>
       </div>      
