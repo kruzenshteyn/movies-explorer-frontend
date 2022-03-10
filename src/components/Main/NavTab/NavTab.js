@@ -1,13 +1,13 @@
-import { NavLink } from 'react-router-dom';
+import {  Link } from 'react-scroll';
 import './NavTab.css';
 
 function NavTab(props) {
 
   return (
     <nav className="navTab">
-      <NavLink className='navTab__button' to="/">О проекте</NavLink>
-      <NavLink className='navTab__button' to="/">Технологии</NavLink>
-      <NavLink className='navTab__button' to="/">Студент</NavLink>
+      <Link className='navTab__button' to="aboutProject">О проекте</Link>
+      <Link className='navTab__button' to="techs">Технологии</Link>
+      <Link className='navTab__button' to="aboutMe">Студент</Link>
     </nav>
   );
 }

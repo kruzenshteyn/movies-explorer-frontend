@@ -14,9 +14,9 @@ function Main(props) {
       <HeaderMain />
       <main className="main">
         <Promo />
-        <AboutProject />
-        <Techs />
-        <AboutMe />
+        <AboutProject name='aboutProject' />
+        <Techs name='techs' />
+        <AboutMe name='aboutMe' />
       </main>      
       <Footer />
     </div>

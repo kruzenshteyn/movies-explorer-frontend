@@ -87,6 +87,10 @@
   line-height: 1.38;
 }
 
+.searchForm__text_checked{
+  font-weight: 500;
+}
+
 @media screen and (max-width: 768px) {
   .searchForm {    
     width: 92.1875vw;

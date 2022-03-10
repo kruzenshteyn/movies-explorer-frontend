@@ -2,24 +2,44 @@ import './SearchForm.css';
 import imgFind from '../../images/find.svg';
 import imgSearch from '../../images/searchIcon.svg';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import React from 'react';
 
 function SearchForm(props) {
+
+  const [checked, setChecked] = React.useState(false);
+  const [keyword, setKeyword] = React.useState('р');
+
+  function handleChangeInput(e){
+    e.preventDefault();
+    setKeyword(e.target.value);
+  }
+
+  function handleCheckBoxClick(e){
+    setChecked(!checked);
+  }
+
+  function handleSubmit(e){
+    e.preventDefault();
+    props.onSubmit(keyword, checked);
+  }
+
   return(
     <section className='searchForm' >
       <div className="searchForm__content">
         <img src={imgSearch} alt='найти' className='searchForm__find-icon'></img>        
         <form className='searchForm__form'>
           <input
-          type="text" className="searchForm__input" id="caption" placeholder="Фильм"
-          required minLength="1" maxLength="30" name = "caption"        
+            type="text" className="searchForm__input" id="caption" placeholder="Фильм"
+            required minLength="1" maxLength="30" name = "caption" value={keyword || ''}
+            onChange={handleChangeInput}
           />            
-          <button type="submit" className='searchForm__button'>
+          <button type="submit" className='searchForm__button' onClick={handleSubmit}>
             <img src={imgFind} alt='найти' className='searchForm__search-icon'></img>  
           </button>
         </form>
         <div className='searchForm__shortfilm'>
-          <FilterCheckbox className='searchForm__slider' />
-          <p className='searchForm__text'>Короткометражки</p>
+          <FilterCheckbox className='searchForm__slider' onChange={handleCheckBoxClick} checked={checked} />
+          <p className={`searchForm__text ${checked ? 'searchForm__text_checked':''}`}>Короткометражки</p>
         </div>        
       </div>
     </section>
