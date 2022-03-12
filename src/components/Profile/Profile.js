@@ -20,6 +20,11 @@ function Profile(props){
     }))
   }
 
+  function handleSignOut(e){
+    e.preventDefault();
+    props.onSignOut();
+  }
+
   return(    
     <div className="profile">
       <Header />
@@ -39,7 +44,7 @@ function Profile(props){
               required minLength="2" maxLength="40" name="email"/>
           </div>
           <button type="submit"  className="profile__button profile__button_type_edit">Редактировать</button>
-          <button type="button"  className="profile__button profile__button_type_logout">Выйти из аккаунта</button>
+          <button type="button"  className="profile__button profile__button_type_logout" onClick={handleSignOut}>Выйти из аккаунта</button>
         </form>
       </main>
     </div>    

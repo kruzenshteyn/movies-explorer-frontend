@@ -32,7 +32,8 @@
   font-size: 11px;
   line-height: 1.18;
   text-align: left;
-  color: #000000;
+  color: #000000;  
+  width: max-content;
 }
 
 .profile__title{
@@ -52,7 +53,8 @@
   line-height: 1.18;
   text-align: right;
   color: #000000;
-  border: none;
+  border: none;  
+  width: 80%;
 }
 
 .profile__button{

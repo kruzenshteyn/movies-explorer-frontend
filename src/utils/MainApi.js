@@ -1,6 +1,14 @@
-import BASE_URL from './config';
+import {API_URL} from './config';
 
-class Auth{
+/* http://localhost:3000/
+http://localhost:3000/movies
+http://localhost:3000/saved-movies
+http://localhost:3000/profile
+http://localhost:3000/signin
+http://localhost:3000/signup
+http://localhost:3000/notFound */
+
+class MainApi{
     constructor(param){
       this._baseUrl = param.baseUrl;
       this._signIn = this._baseUrl + 'signin';
@@ -19,14 +27,15 @@ class Auth{
       return Promise.reject(`Ошибка: ${res.status}`);
     }
 
-    register(email, password){
+    register(email, password, name){
       return fetch(this._signUp, {
         method: "POST",
         headers: this._headers,
         credentials: 'include',
         body: JSON.stringify({
           email:email,
-          password:password
+          password:password,
+          name:name,
         })
       })
       .then(this._checkResponse);
@@ -58,12 +67,12 @@ class Auth{
     }
   }
 
-  const auth = new Auth({
-    baseUrl: BASE_URL,
+  const mainApi = new MainApi({
+    baseUrl: API_URL,
     headers: {
         'Content-Type': 'application/json'
     },
     credentials: 'include',
   });
 
-  export default auth;
+  export default mainApi;

@@ -2,6 +2,8 @@ import './MoviesCard.css';
 
 import React from 'react';
 
+import { MOVIES_URL } from '../../utils/config';
+
 const URL = 'https://api.nomoreparties.co';
 
 function MoviesCard(props) {
@@ -36,7 +38,7 @@ function MoviesCard(props) {
         >
         </button>        
       </figcaption>
-      <img className="moviesCard__image" src={URL + movie.image.url} alt={movie.nameRU} onClick={handleImageClick} />
+      <img className="moviesCard__image" src={MOVIES_URL + movie.image.url} alt={movie.nameRU} onClick={handleImageClick} />
     </figure>
   );
 }

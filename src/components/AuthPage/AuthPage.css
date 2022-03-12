@@ -98,11 +98,20 @@
   margin: 5px 0 8px 0;
 }
 
+.authPage__input:focus{
+  outline: 0 none;
+}
+
 .authPage__error{
   font-weight: 400;
   font-size: 10px;
   line-height: 1.2;
   color: #FF3055;
+  visibility: hidden;
+}
+
+.authPage__error_visiable{
+  visibility: visible;
 }
 
 @media screen and (max-width: 768px) {

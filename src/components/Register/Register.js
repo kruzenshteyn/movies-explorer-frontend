@@ -5,12 +5,11 @@ import AuthPage from '../AuthPage/AuthPage';
 
 function Login(props){
 
-  const [values, setValues] = React.useState({name:'Виталий', email:'pochta@yandex.ru', password:'test'});
+  const [values, setValues] = React.useState({name:'Виталий', email:'pochta@yandex.ru', password:'password'});
 
   function handleSubmit(e){
     e.preventDefault();
-    console.log('Функция в процессе разработки');
-    alert('Функция в процессе разработки');
+    props.onSignUp(values);
   }
 
   const handleChange = (e) => {

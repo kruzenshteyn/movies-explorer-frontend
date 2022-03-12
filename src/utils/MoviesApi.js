@@ -1,6 +1,6 @@
-import BASE_URL from './config';
+import {MOVIES_URL} from './config';
 
-class Api{
+class MoviesApi{
     constructor(param){
       this._baseUrl = param.baseUrl;
       this._cards = this._baseUrl + 'cards';
@@ -105,11 +105,11 @@ class Api{
     }
   }
 
-  const api = new Api({
-    baseUrl: BASE_URL,
+  const moviesApi = new MoviesApi({
+    baseUrl: MOVIES_URL,
     headers: {
         'Content-Type': 'application/json'
     }
   });
 
-  export default api;
+  export default moviesApi;

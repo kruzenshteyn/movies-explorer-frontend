@@ -13,6 +13,15 @@ import Main from '../Main/Main';
 import Register from '../Register/Register';
 import Popup from '../Popup/Popup'
 
+import TestApi from '../TestApi/TestApi';
+
+/* Api */
+import mainApi from '../../utils/MainApi';
+import moviesApi from '../../utils/MoviesApi'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext'
+
+
+
 /* 
   http://localhost:3000/
   http://localhost:3000/movies
@@ -23,11 +32,93 @@ import Popup from '../Popup/Popup'
   http://localhost:3000/notFound
 */
 
-function App() {
+
+function App(props) {
+
+  //Profile
+  const [currentUser, setCurrentUser] = React.useState({});
+
+  const [authUser, setAuthUser] = React.useState({email:'', _id:'', isLoggedIn:false});
+  
+  function refreshProfileData() {
+    mainApi.getUserInfo()
+    .then(data => {      
+      setCurrentUser(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+      //Check token при загрузке
+  React.useEffect(()=>{
+    checkToken();
+  },[]);
+
+  function handleSignOut(){
+    localStorage.removeItem('token');
+    setAuthUser({email:'', _id:'', name:'', isLoggedIn:false});
+    props.history.push('/');    
+  }
+
+  function checkToken(){
+    const token = localStorage.getItem('token');
+    
+    if(token){
+      mainApi.getUserInfo(token)
+      .then(res=>{
+        
+        setAuthUser({email:res.email, _id:res._id, isLoggedIn:true});
+        props.history.push('/movies');
+        refreshProfileData();
+        
+        //refreshCardData();
+      })
+      .catch((err)=>{
+        console.log(err);
+      })
+    }
+    else{
+      setAuthUser({email:'', _id:'', isLoggedIn:false});
+    }
+  }
+
+  function handleRegister(data){
+    mainApi.register(data.email, data.password, data.name)
+    .then(data=>{
+      //setInfoTooltipProps({isOpen:true, isSuccess:true});
+      props.history.push('/signin');
+    })
+    .catch((err)=> {
+      //setInfoTooltipProps({isOpen:true, isSuccess:false});
+      console.log(`Error = ${err}`)
+    });
+  }
+
+  function handleLogin(data){
+    mainApi.login(data.email, data.password)
+    .then(data=>{
+      localStorage.setItem('token', data.token);
+      //props.history.push('/movies');
+      checkToken();
+    })
+    .catch((err)=> {
+      //setInfoTooltipProps({isOpen:true, isSuccess:false});
+      console.log(`Error = ${err}`)
+    });
+  }
+
+
+
   return (
     <div className="App">
       <Switch>
         <Route exact path="/">
+          <TestApi 
+            onUserMe={refreshProfileData}
+            onSignIn={handleLogin}
+            onSignUp={handleRegister}
+           />
           <Main />
         </Route>        
         <Route path="/movies">
@@ -37,13 +128,13 @@ function App() {
           <SavedMovies />
         </Route>
         <Route path="/profile">
-          <Profile />
+          <Profile onSignOut={handleSignOut} />
         </Route>
         <Route path="/signin">
-          <Login />
+          <Login onSignIn={handleLogin}/>
         </Route>
         <Route path="/signup">
-          <Register />
+          <Register onSignUp={handleRegister}/>
         </Route>
         <Route path="/menu">
           <Popup />

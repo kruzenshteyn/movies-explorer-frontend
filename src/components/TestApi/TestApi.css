@@ -1,0 +1,16 @@
+.testApi{
+  margin: 50px auto;
+  display: flex;
+}
+
+.testApi__list{
+  margin: 0 auto;
+  display: flex;  
+  flex-direction: row;
+  list-style-type: none; /* Убираем маркеры */
+  justify-content: center;
+}
+
+.testApi__button{
+  margin-right: 30px;  
+}

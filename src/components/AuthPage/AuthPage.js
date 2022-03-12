@@ -13,7 +13,7 @@ function AuthPage(props){
         <h3 className="authPage__title">{props.title}</h3>
         <form className="authPage__form" onSubmit={props.handleSubmit}>
           {props.children}
-          <button type="submit"  className="authPage__button">
+          <button type="submit"  className="authPage__button" onClick={props.handleSubmit}>
             {props.btnTitle}
           </button>
         </form>
