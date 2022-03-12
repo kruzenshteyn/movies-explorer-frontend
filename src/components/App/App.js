@@ -19,7 +19,7 @@ import TestApi from '../TestApi/TestApi';
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
-
+import {getServerErrorMessage} from '../../utils/getServerErrorMessage'
 
 
 /* 
@@ -38,7 +38,9 @@ function App(props) {
   //Profile
   const [currentUser, setCurrentUser] = React.useState({});
 
-  const [authUser, setAuthUser] = React.useState({email:'', _id:'', isLoggedIn:false});
+  const [authUser, setAuthUser] = React.useState({email:'', _id:'', name:'', isLoggedIn:false});
+
+  const [apiError, setApiError] = React.useState(null);
   
   function refreshProfileData() {
     mainApi.getUserInfo()
@@ -66,20 +68,19 @@ function App(props) {
     
     if(token){
       mainApi.getUserInfo(token)
-      .then(res=>{
-        
-        setAuthUser({email:res.email, _id:res._id, isLoggedIn:true});
+      .then(res=>{        
+        setAuthUser({email:res.email, _id:res._id, name:res.name, isLoggedIn:true});
         props.history.push('/movies');
         refreshProfileData();
-        
         //refreshCardData();
+        setApiError(null);
       })
       .catch((err)=>{
         console.log(err);
       })
     }
     else{
-      setAuthUser({email:'', _id:'', isLoggedIn:false});
+      setAuthUser({email:'', _id:'', name:'', isLoggedIn:false});
     }
   }
 
@@ -88,9 +89,11 @@ function App(props) {
     .then(data=>{
       //setInfoTooltipProps({isOpen:true, isSuccess:true});
       props.history.push('/signin');
+      
     })
     .catch((err)=> {
       //setInfoTooltipProps({isOpen:true, isSuccess:false});
+      setApiError(getServerErrorMessage(err));
       console.log(`Error = ${err}`)
     });
   }
@@ -104,21 +107,32 @@ function App(props) {
     })
     .catch((err)=> {
       //setInfoTooltipProps({isOpen:true, isSuccess:false});
+      setApiError(getServerErrorMessage(err));
       console.log(`Error = ${err}`)
     });
   }
 
+  function handleEditProfile(data){
+    mainApi.setUserInfo(data.name, data.email)
+    .then(data=>{      
+      checkToken();
+    })
+    .catch((err)=> {
+      //setInfoTooltipProps({isOpen:true, isSuccess:false});
+      setApiError(getServerErrorMessage(err));
+      console.log(`Error = ${err}`)
+    });
+  }
+
+  function resetApiError(){
+    setApiError(null);
+  }
 
 
   return (
     <div className="App">
       <Switch>
         <Route exact path="/">
-          <TestApi 
-            onUserMe={refreshProfileData}
-            onSignIn={handleLogin}
-            onSignUp={handleRegister}
-           />
           <Main />
         </Route>        
         <Route path="/movies">
@@ -128,13 +142,15 @@ function App(props) {
           <SavedMovies />
         </Route>
         <Route path="/profile">
-          <Profile onSignOut={handleSignOut} />
+          <Profile user={authUser} onSignOut={handleSignOut} 
+            onSubmit={handleEditProfile} apiError={apiError}
+            resetApiError={resetApiError} />
         </Route>
         <Route path="/signin">
-          <Login onSignIn={handleLogin}/>
+          <Login onSignIn={handleLogin} apiError={apiError} resetApiError={resetApiError}/>
         </Route>
         <Route path="/signup">
-          <Register onSignUp={handleRegister}/>
+          <Register onSignUp={handleRegister} apiError={apiError} resetApiError={resetApiError}/>
         </Route>
         <Route path="/menu">
           <Popup />

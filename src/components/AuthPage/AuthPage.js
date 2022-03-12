@@ -3,7 +3,6 @@ import logo from '../../images/logo.svg';
 import { Link } from 'react-router-dom';
 
 function AuthPage(props){
-
   return(
     <div className='authPage' >
       <Link to="/">
@@ -13,7 +12,7 @@ function AuthPage(props){
         <h3 className="authPage__title">{props.title}</h3>
         <form className="authPage__form" onSubmit={props.handleSubmit}>
           {props.children}
-          <button type="submit"  className="authPage__button" onClick={props.handleSubmit}>
+          <button type="submit"  className='authPage__button' disabled={!props.isValid} onClick={props.handleSubmit}>
             {props.btnTitle}
           </button>
         </form>

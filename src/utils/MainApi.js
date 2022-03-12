@@ -24,7 +24,7 @@ class MainApi{
         return res.json();
       }
       // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка: ${res.status}`);
+      return Promise.reject(res.status);
     }
 
     register(email, password, name){
@@ -54,7 +54,7 @@ class MainApi{
       .then(this._checkResponse);
     }
 
-    getUserInfo(jwt){
+    getUserInfo(){
       return fetch(this._me, {
         method: "GET",
         credentials: 'include',
@@ -62,6 +62,19 @@ class MainApi{
           'Content-Type': 'application/json',
           'Authorization' : `Bearer ${localStorage.getItem('token')}`
         }
+      })
+      .then(this._checkResponse);;
+    }
+
+    setUserInfo(name, email){
+      return fetch(this._me, {
+        method: "PATCH",
+        headers: this._headers,
+        credentials: 'include',
+        body: JSON.stringify({
+          name:name,
+          email:email
+        })
       })
       .then(this._checkResponse);;
     }
