@@ -1,5 +1,5 @@
 import {API_URL} from './config';
-
+import { MOVIES_URL } from '../utils/config';
 /* http://localhost:3000/
 http://localhost:3000/movies
 http://localhost:3000/saved-movies
@@ -14,12 +14,13 @@ class MainApi{
       this._signIn = this._baseUrl + 'signin';
       this._signUp = this._baseUrl + 'signup';
       this._signOut = this._baseUrl + '';
+      this._movies = this._baseUrl + 'movies';
       this._me = this._baseUrl + 'users/me';
-
       this._headers = param.headers;
     }
 
     _checkResponse(res) {
+      //console.log(res);
       if (res.ok) {
         return res.json();
       }
@@ -77,6 +78,56 @@ class MainApi{
         })
       })
       .then(this._checkResponse);;
+    }
+
+    getSavedMovies(){
+      return fetch(this._movies, {
+        method: "GET",
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization' : `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+      .then(this._checkResponse);
+    }
+
+    deleteMovie(id){
+      return fetch(`${this._movies}/${id}`, {
+        method: "DELETE",
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization' : `Bearer ${localStorage.getItem('token')}`
+        }        
+      })
+      .then(this._checkResponse);    
+    }
+
+    saveMovie(data){
+      
+      return fetch(this._movies, {
+        method: "POST",
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization' : `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({
+          country: data.country === null ? 'none' : data.country,          
+          description: data.description === null ? 'none' : data.description,
+          director: data.director === null ? 'none' : data.director,
+          duration: data.duration,
+          image: MOVIES_URL + data.image.url,
+          nameEN: data.nameEN === null ? 'none' : data.nameEN,
+          nameRU: data.nameRU,
+          thumbnail: MOVIES_URL + data.image.formats.thumbnail.url,
+          trailerLink: data.trailerLink,
+          year: data.year === null ? 0 : data.year,
+          movieId: data.id
+        })
+      })
+      .then(this._checkResponse);
     }
   }
 

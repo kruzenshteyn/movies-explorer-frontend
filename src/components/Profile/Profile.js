@@ -3,18 +3,22 @@ import React from 'react';
 import Header from '../Header/Header';
 
 import { useFormWithValidation } from '../../utils/useFormWithValidation';
+import { CurrentUserContext  } from '../../contexts/CurrentUserContext';
 
 function Profile(props){
   
   const { values, handleChange, errors, isValid, resetForm, setValues } = useFormWithValidation();
 
+  const currentUser = React.useContext(CurrentUserContext);
+  
   React.useEffect(()=>{
     props.resetApiError();
+    
   },[]);
 
   React.useEffect(()=>{
     setValues({name: props.user.name, email: props.user.email});
-  }, [props.user]);
+  }, [currentUser]);
 
   function handleSubmit(e){
     e.preventDefault();    

@@ -13,7 +13,6 @@ import Main from '../Main/Main';
 import Register from '../Register/Register';
 import Popup from '../Popup/Popup'
 
-import TestApi from '../TestApi/TestApi';
 
 /* Api */
 import mainApi from '../../utils/MainApi';
@@ -36,12 +35,27 @@ import {getServerErrorMessage} from '../../utils/getServerErrorMessage'
 function App(props) {
 
   //Profile
-  const [currentUser, setCurrentUser] = React.useState({});
+  //const [currentUser, setCurrentUser] = React.useState({});
 
-  const [authUser, setAuthUser] = React.useState({email:'', _id:'', name:'', isLoggedIn:false});
+  const [currentUser, setCurrentUser] = React.useState([]);
 
   const [apiError, setApiError] = React.useState(null);
+
+  const [moviesData, setMoviesData] = React.useState([]);
+
+  const [savedMovies, setSavedMovies] = React.useState([]);
+
   
+  function refreshMoviesData(){
+    moviesApi.getMovies()
+    .then(data => {
+      setMoviesData(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
   function refreshProfileData() {
     mainApi.getUserInfo()
     .then(data => {      
@@ -54,33 +68,35 @@ function App(props) {
 
       //Check token при загрузке
   React.useEffect(()=>{
-    checkToken();
+    checkToken();    
+    handleLoadSavedMovies();    
+    refreshMoviesData();
   },[]);
 
   function handleSignOut(){
     localStorage.removeItem('token');
-    setAuthUser({email:'', _id:'', name:'', isLoggedIn:false});
+    setCurrentUser({email:'', _id:'', name:'', isLoggedIn:false});
     props.history.push('/');    
   }
 
   function checkToken(){
     const token = localStorage.getItem('token');
     
-    if(token){
-      mainApi.getUserInfo(token)
-      .then(res=>{        
-        setAuthUser({email:res.email, _id:res._id, name:res.name, isLoggedIn:true});
+    if(token){      
+      mainApi.getUserInfo()
+      .then(res=>{
+        setCurrentUser({email:res.email, _id:res._id, name:res.name, isLoggedIn:true});
         props.history.push('/movies');
         refreshProfileData();
         //refreshCardData();
         setApiError(null);
       })
-      .catch((err)=>{
+      .catch(err => {
         console.log(err);
       })
     }
     else{
-      setAuthUser({email:'', _id:'', name:'', isLoggedIn:false});
+      setCurrentUser({email:'', _id:'', name:'', isLoggedIn:false});
     }
   }
 
@@ -100,9 +116,9 @@ function App(props) {
 
   function handleLogin(data){
     mainApi.login(data.email, data.password)
-    .then(data=>{
-      localStorage.setItem('token', data.token);
-      //props.history.push('/movies');
+    .then(res=>{
+      localStorage.setItem('token', res.token);
+      //props.history.push('/movies');      
       checkToken();
     })
     .catch((err)=> {
@@ -128,37 +144,95 @@ function App(props) {
     setApiError(null);
   }
 
+  function handleLoadSavedMovies(){
+    mainApi.getSavedMovies()
+    .then(data => {
+      setSavedMovies(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  function handleSaveMovie(data){    
+    mainApi.saveMovie(data)
+    .then(data => {
+      handleLoadSavedMovies();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  function findInSavedMovies(m){
+    const movie = savedMovies.find((x)=> x.movieId === m.id)
+    if(movie) return movie._id;
+    else return undefined;
+  }
+
+  function handleUnsaveMovie(data){
+    const id = findInSavedMovies(data);
+    mainApi.deleteMovie(id)
+    .then(data => {
+      handleLoadSavedMovies();
+    })
+    .catch((err) => {      
+      console.log(getServerErrorMessage(err));
+    });
+  }
+
+  function handleDeleteMovie(id){    
+    mainApi.deleteMovie(id)
+    .then(data => {
+      handleLoadSavedMovies();
+    })
+    .catch((err) => {      
+      console.log(getServerErrorMessage(err));
+    });
+  }
+
 
   return (
     <div className="App">
-      <Switch>
-        <Route exact path="/">
-          <Main />
-        </Route>        
-        <Route path="/movies">
-          <Movies />
-        </Route>
-        <Route path="/saved-movies">
-          <SavedMovies />
-        </Route>
-        <Route path="/profile">
-          <Profile user={authUser} onSignOut={handleSignOut} 
-            onSubmit={handleEditProfile} apiError={apiError}
-            resetApiError={resetApiError} />
-        </Route>
-        <Route path="/signin">
-          <Login onSignIn={handleLogin} apiError={apiError} resetApiError={resetApiError}/>
-        </Route>
-        <Route path="/signup">
-          <Register onSignUp={handleRegister} apiError={apiError} resetApiError={resetApiError}/>
-        </Route>
-        <Route path="/menu">
-          <Popup />
-        </Route>
-        <Route path="*">
-          <NotFoundPage />
-        </Route>
-      </Switch>
+      <CurrentUserContext.Provider value={currentUser}>
+        <Switch>
+          <Route exact path="/">
+            <Main />
+          </Route>        
+          <Route path="/movies">
+            <Movies 
+              moviesData={moviesData} 
+              savedMovies={savedMovies}
+              onSaveMovie={handleSaveMovie}
+              onUnsaveMovie={handleUnsaveMovie}
+              isDataloading={false}
+            />
+          </Route>
+          <Route path="/saved-movies">
+            <SavedMovies 
+              moviesData={savedMovies}
+              onDeleteMovie={handleDeleteMovie}
+            />
+          </Route>
+          <Route path="/profile">
+            <Profile user={currentUser} onSignOut={handleSignOut} 
+              onSubmit={handleEditProfile} apiError={apiError}
+              resetApiError={resetApiError} />
+          </Route>
+          <Route path="/signin">
+            <Login onSignIn={handleLogin} apiError={apiError} resetApiError={resetApiError}/>
+          </Route>
+          <Route path="/signup">
+            <Register onSignUp={handleRegister} apiError={apiError} resetApiError={resetApiError}/>
+          </Route>
+          <Route path="/menu">
+            <Popup />
+          </Route>
+          <Route path="*">
+            <NotFoundPage />
+          </Route>
+        </Switch>
+      </CurrentUserContext.Provider>
     </div>
   );
 }

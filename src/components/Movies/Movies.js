@@ -4,18 +4,22 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-import MOVIES from '../../data/data';
+
 import MoviesNotFound from '../MoviesNotFound/MoviesNotFound';
 
 import React, { useEffect } from 'react';
 
 import useWindowSize from '../../utils/useWindowSize';
+import Preloader from '../Preloader/Preloader';
+
 
 function Movies(props) {
   const [foundMovies, setFoundMovies] = React.useState([]);
+
+  
+  const [isDataloading, setIsDataLoading] = React.useState(false);
   
   const windowSize = useWindowSize();
-
   const [movieCount, setMovieCount] = React.useState(12);
   const [maxMovieCount, setMaxMovieCount] = React.useState(12);
   const [movieCountIncrement, setMovieCountIncrement] = React.useState(3);
@@ -32,17 +36,22 @@ function Movies(props) {
       setMovieCountIncrement(3);
     }
     setMovieCount(maxMovieCount);
-  }, [windowSize, foundMovies]);
+  }, [windowSize, foundMovies, maxMovieCount]);
 
-  
+  useEffect(() => {
+    const lastRes = localStorage.getItem('movies');
+    if(lastRes) setFoundMovies(JSON.parse(lastRes));
+  }, []);
 
   function handleAddMoreClick(){
-    setMovieCount(movieCount + movieCountIncrement);
-    
+    setMovieCount(movieCount + movieCountIncrement);    
   }
 
   function handleSubmit(keyword, justShortMovies){
-    const sorted = MOVIES.filter((m) => {
+    setIsDataLoading(true);
+    setFoundMovies([]);
+    // Поиск по заданному ключевому слову
+    var sorted = props.moviesData.filter((m) => {
       if(m.nameRU.toLowerCase().includes(keyword.toLowerCase())){
         if(justShortMovies){
           return m.duration < 40;
@@ -51,7 +60,26 @@ function Movies(props) {
       }
       else return false;
     } );
-    setFoundMovies(sorted);
+    // Проверка на наличие в сохранённых
+    sorted.forEach(function (item) {
+      const isInSaved = props.savedMovies.find((x)=> x.movieId === item.id);      
+      item.isSaved = isInSaved ? true : false;
+    })
+    // Задержка для моделирования поиска на сервере
+    setTimeout(()=>{
+      setIsDataLoading(false);
+      setFoundMovies(sorted);
+      localStorage.setItem('movies', JSON.stringify(sorted)); 
+    }, 500);
+  }
+
+  function updateLocalStorage(movie, isSaved){
+    const movies = foundMovies.map(m => {
+      if(m.id === movie.id) m.isSaved = isSaved;
+      return m;
+    })
+
+    localStorage.setItem('movies', JSON.stringify(movies));
   }
   
   return (
@@ -60,9 +88,19 @@ function Movies(props) {
       <main>
         <SearchForm onSubmit={handleSubmit} />
         {
-          foundMovies.length === 0 
+          isDataloading ? <Preloader /> : <></>
+        }
+        {
+          foundMovies.length === 0 && !isDataloading
           ? <MoviesNotFound text="Ничего не найдено" /> 
-          : <MoviesCardList movies={foundMovies} movieCount={movieCount} />
+          : <MoviesCardList 
+              movies={foundMovies} 
+              movieCount={movieCount} 
+              onSaveMovie={props.onSaveMovie}
+              onDeleteMovie={props.onUnsaveMovie}
+              isSavedCards = {false}
+              onUpdateMovies={updateLocalStorage}
+            />
         }       
         <div className={`movies__more ${(foundMovies.length < movieCount) ? '':'movies__more_active'}`}>
           <button 
