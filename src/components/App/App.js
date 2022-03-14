@@ -22,22 +22,7 @@ import moviesApi from '../../utils/MoviesApi'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 import {getServerErrorMessage} from '../../utils/getServerErrorMessage'
 
-
-/* 
-  http://localhost:3000/
-  http://localhost:3000/movies
-  http://localhost:3000/saved-movies
-  http://localhost:3000/profile
-  http://localhost:3000/signin
-  http://localhost:3000/signup
-  http://localhost:3000/notFound
-*/
-
-
 function App(props) {
-
-  //Profile
-  //const [currentUser, setCurrentUser] = React.useState({});
 
   const [currentUser, setCurrentUser] = React.useState({email:'', _id:'', name:''});
 
@@ -102,6 +87,7 @@ function App(props) {
     }
     else{
       setCurrentUser({email:'', _id:'', name:''});
+      setIsLoggedIn(false);
     }
   }
 
@@ -123,7 +109,6 @@ function App(props) {
     mainApi.login(data.email, data.password)
     .then(res=>{
       localStorage.setItem('token', res.token);
-      //props.history.push('/movies');      
       checkToken();
     })
     .catch((err)=> {
@@ -139,7 +124,7 @@ function App(props) {
       checkToken();
     })
     .catch((err)=> {
-      //setInfoTooltipProps({isOpen:true, isSuccess:false});
+      setInfoTooltipProps({isOpen:true, isSuccess:false});
       setApiError(getServerErrorMessage(err));
       console.log(`Error = ${err}`)
     });

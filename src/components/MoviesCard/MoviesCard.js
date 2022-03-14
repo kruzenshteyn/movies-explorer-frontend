@@ -32,7 +32,7 @@ function MoviesCard(props) {
       props.onUpdateMovies();
     }
   }
-//isSaved ? 'moviesCard__button_state_saved': 'moviesCard__button_state_unsaved'
+  
   return (
     <figure className="moviesCard">
       <figcaption className="moviesCard__caption">

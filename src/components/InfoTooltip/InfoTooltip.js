@@ -20,11 +20,11 @@ function InfoTooltip(props){
     }
 
     return(
-      <div className={`popup ${props.isOpen && 'popup_is-opened'}`} >
-        <div className="popup__content">
-          <button type="button" className="button popup__close" onClick={props.onClose}></button>
-          <img className="popup__image" src={imageSrc} alt={imageAlt} />
-          <h3 className="popup__message">{message}</h3>
+      <div className={`infoTooltip ${props.isOpen && 'infoTooltip_is-opened'}`} >
+        <div className="infoTooltip__content">
+          <button type="button" className="infoTooltip__button infoTooltip__close" onClick={props.onClose}></button>
+          <img className="infoTooltip__image" src={imageSrc} alt={imageAlt} />
+          <h3 className="infoTooltip__message">{message}</h3>
         </div>
       </div>
     )

@@ -1,8 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import './Popup.css';
 
-function Popup(props) {
-  
+function Popup(props) {  
   return (
     <section className={`popup ${props.isOpen ? 'popup_opened' : ''}`}>
       <div className='popup__container'>

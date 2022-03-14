@@ -1,4 +1,4 @@
-.popup {
+.infoTooltip {
   font-family: "Inter", Arial, sans-serif;
   display: flex;
   flex-direction: column;
@@ -15,12 +15,12 @@
   transition: 0.5s ease-in-out !important;
 }
 
-.popup_is-opened {
+.infoTooltip_is-opened {
   opacity: 1;
   visibility: visible;
 }
 
-.popup__content {
+.infoTooltip__content {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -33,14 +33,14 @@
 }
 
 @media screen and (max-width: 500px) {
-  .popup__content {
+  .infoTooltip__content {
     font-size: 14px;
     max-width: 282px;
     padding: 25px 22px;
   }
 }
 
-.button {
+.infoTooltip__button {
   color: white;
   background-color: black;
   border: 1px solid white;
@@ -50,11 +50,11 @@
   padding: 0;
 }
 
-.button:hover {
+.infoTooltip__button:hover {
   opacity: 0.6;
 }
 
-.popup__close {
+.infoTooltip__close {
   min-width: 32px;
   min-height: 32px;
   background-image: url("../../images/Close_Icon.svg");
@@ -68,7 +68,7 @@
 }
 
 @media screen and (max-width: 550px) {
-  .popup__close {
+  .infoTooltip__close {
     min-width: 20px;
     min-height: 20px;
     top: -36px;
@@ -76,14 +76,14 @@
   }
 }
 
-.popup__image{
+.infoTooltip__image{
   margin: 26px auto 0 auto;
   width: 120px;
   height: 120px;
   align-self: center;
 }
 
-.popup__message{
+.infoTooltip__message{
   /* Вы успешно зарегистрировались! */
 
   margin: 30px auto 23px auto;
