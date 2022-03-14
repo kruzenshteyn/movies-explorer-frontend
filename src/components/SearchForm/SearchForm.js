@@ -32,8 +32,10 @@ function SearchForm(props) {
         <form className='searchForm__form'>
           <input
             type="text" className="searchForm__input" id="caption" placeholder="Фильм"
+
             required minLength="1" maxLength="30" name = "caption" value={keyword || ''}
             onChange={handleChangeInput}
+
           />            
           <button type="submit" className='searchForm__button' onClick={handleSubmit}>
             <img src={imgFind} alt='найти' className='searchForm__search-icon'></img>  

@@ -31,6 +31,7 @@ function Register(props){
           <p className='authPage__label'>Имя</p>
           <input type="text" className="authPage__input" value={values.name || ''} 
             required minLength="2" maxLength="40" name="name" onChange={handleChange}
+
             placeholder="Имя" />
             <span className="authPage__error" id="authPage-error">{errors['name']}</span>
         </div>
@@ -41,13 +42,16 @@ function Register(props){
             required minLength="2" maxLength="40" name="email" onChange={handleChange}
             placeholder="pochta@yandex.ru" />
           <span className="authPage__error" id="authPage-error">{errors['email']}</span>
+
         </div>
         <div className='authPage__fields'>
           <p className='authPage__label'>Пароль</p>
           <input type="password" className="authPage__input" value={values.password || ''} 
             required minLength="5" maxLength="40" name="password" onChange={handleChange}
+
             placeholder="Пароль" />
           <span className="authPage__error" id="authPage-error">{errors['password']}</span>
+
         </div>        
         <span className="authPage__error" id="authPage-error">{props.apiError}</span>
       </div>      
