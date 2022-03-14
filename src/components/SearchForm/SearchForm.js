@@ -7,7 +7,7 @@ import React from 'react';
 function SearchForm(props) {
 
   const [checked, setChecked] = React.useState(false);
-  const [keyword, setKeyword] = React.useState('р');
+  const [keyword, setKeyword] = React.useState('');
 
   function handleChangeInput(e){
     e.preventDefault();
@@ -15,7 +15,9 @@ function SearchForm(props) {
   }
 
   function handleCheckBoxClick(e){
+    e.preventDefault();
     setChecked(!checked);
+    props.onSubmit(keyword, !checked);
   }
 
   function handleSubmit(e){

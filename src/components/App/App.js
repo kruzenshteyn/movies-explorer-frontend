@@ -11,7 +11,9 @@ import Login from '../Login/Login';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import Main from '../Main/Main';
 import Register from '../Register/Register';
-import Popup from '../Popup/Popup'
+//import Popup from '../Popup/Popup';
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
+import ProtectedRoute from '../../utils/ProtectedRoute';
 
 
 /* Api */
@@ -37,7 +39,9 @@ function App(props) {
   //Profile
   //const [currentUser, setCurrentUser] = React.useState({});
 
-  const [currentUser, setCurrentUser] = React.useState([]);
+  const [currentUser, setCurrentUser] = React.useState({email:'', _id:'', name:''});
+
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   const [apiError, setApiError] = React.useState(null);
 
@@ -45,6 +49,7 @@ function App(props) {
 
   const [savedMovies, setSavedMovies] = React.useState([]);
 
+  const [infoTooltipProps, setInfoTooltipProps] = React.useState({isOpen:false, isSuccess:true});
   
   function refreshMoviesData(){
     moviesApi.getMovies()
@@ -85,10 +90,10 @@ function App(props) {
     if(token){      
       mainApi.getUserInfo()
       .then(res=>{
-        setCurrentUser({email:res.email, _id:res._id, name:res.name, isLoggedIn:true});
+        setCurrentUser({email:res.email, _id:res._id, name:res.name});
+        setIsLoggedIn(true);
         props.history.push('/movies');
         refreshProfileData();
-        //refreshCardData();
         setApiError(null);
       })
       .catch(err => {
@@ -96,19 +101,19 @@ function App(props) {
       })
     }
     else{
-      setCurrentUser({email:'', _id:'', name:'', isLoggedIn:false});
+      setCurrentUser({email:'', _id:'', name:''});
     }
   }
 
   function handleRegister(data){
     mainApi.register(data.email, data.password, data.name)
     .then(data=>{
-      //setInfoTooltipProps({isOpen:true, isSuccess:true});
+      setInfoTooltipProps({isOpen:true, isSuccess:true});
       props.history.push('/signin');
       
     })
     .catch((err)=> {
-      //setInfoTooltipProps({isOpen:true, isSuccess:false});
+      setInfoTooltipProps({isOpen:true, isSuccess:false});
       setApiError(getServerErrorMessage(err));
       console.log(`Error = ${err}`)
     });
@@ -122,7 +127,7 @@ function App(props) {
       checkToken();
     })
     .catch((err)=> {
-      //setInfoTooltipProps({isOpen:true, isSuccess:false});
+      setInfoTooltipProps({isOpen:true, isSuccess:false});
       setApiError(getServerErrorMessage(err));
       console.log(`Error = ${err}`)
     });
@@ -152,6 +157,10 @@ function App(props) {
     .catch((err) => {
       console.log(err);
     });
+  }
+
+  const closeAllPopups = ()=>{
+    setInfoTooltipProps(_=>({...infoTooltipProps, isOpen:false}));
   }
 
   function handleSaveMovie(data){    
@@ -196,10 +205,7 @@ function App(props) {
     <div className="App">
       <CurrentUserContext.Provider value={currentUser}>
         <Switch>
-          <Route exact path="/">
-            <Main />
-          </Route>        
-          <Route path="/movies">
+          <ProtectedRoute path="/movies" loggedIn={isLoggedIn}>
             <Movies 
               moviesData={moviesData} 
               savedMovies={savedMovies}
@@ -207,31 +213,32 @@ function App(props) {
               onUnsaveMovie={handleUnsaveMovie}
               isDataloading={false}
             />
-          </Route>
-          <Route path="/saved-movies">
+          </ProtectedRoute>
+          <ProtectedRoute path="/saved-movies" loggedIn={isLoggedIn}>
             <SavedMovies 
               moviesData={savedMovies}
               onDeleteMovie={handleDeleteMovie}
             />
-          </Route>
-          <Route path="/profile">
+          </ProtectedRoute>
+          <ProtectedRoute path="/profile" loggedIn={isLoggedIn}>
             <Profile user={currentUser} onSignOut={handleSignOut} 
               onSubmit={handleEditProfile} apiError={apiError}
               resetApiError={resetApiError} />
-          </Route>
+          </ProtectedRoute>
+          <Route exact path="/">
+            <Main />
+          </Route> 
           <Route path="/signin">
             <Login onSignIn={handleLogin} apiError={apiError} resetApiError={resetApiError}/>
           </Route>
           <Route path="/signup">
             <Register onSignUp={handleRegister} apiError={apiError} resetApiError={resetApiError}/>
-          </Route>
-          <Route path="/menu">
-            <Popup />
-          </Route>
+          </Route>          
           <Route path="*">
             <NotFoundPage />
           </Route>
         </Switch>
+        <InfoTooltip isOpen={infoTooltipProps.isOpen} onClose={closeAllPopups} isSuccess={infoTooltipProps.isSuccess}/>
       </CurrentUserContext.Provider>
     </div>
   );

@@ -18,8 +18,7 @@ function MoviesCard(props) {
 
   function handleImageClick(e){
     e.preventDefault();
-    console.log(`Image ${movie.nameRU} clicked Link=${trailer}`);
-    //window.open(trailer, '_blank').focus();
+    window.open(trailer, '_blank').focus();
   }
 
   function handleBtnSaveClick(e){
@@ -30,7 +29,7 @@ function MoviesCard(props) {
       if(isSaved) {props.onDeleteMovie(movie);}
       else {props.onSaveMovie(movie);}
       setIsSaved(!isSaved);
-      props.onUpdateMovies(movie, !isSaved);
+      props.onUpdateMovies();
     }
   }
 //isSaved ? 'moviesCard__button_state_saved': 'moviesCard__button_state_unsaved'

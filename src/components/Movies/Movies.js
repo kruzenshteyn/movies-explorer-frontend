@@ -43,6 +43,10 @@ function Movies(props) {
     if(lastRes) setFoundMovies(JSON.parse(lastRes));
   }, []);
 
+  useEffect(() => {   
+      updateLocalStorage();    
+  }, [foundMovies])
+
   function handleAddMoreClick(){
     setMovieCount(movieCount + movieCountIncrement);    
   }
@@ -73,13 +77,12 @@ function Movies(props) {
     }, 500);
   }
 
-  function updateLocalStorage(movie, isSaved){
-    const movies = foundMovies.map(m => {
-      if(m.id === movie.id) m.isSaved = isSaved;
-      return m;
+  function updateLocalStorage(){
+    foundMovies.forEach(function (item) {
+      const isInSaved = props.savedMovies.find((x)=> x.movieId === item.id);      
+      item.isSaved = isInSaved ? true : false;
     })
-
-    localStorage.setItem('movies', JSON.stringify(movies));
+    localStorage.setItem('movies', JSON.stringify(foundMovies));
   }
   
   return (

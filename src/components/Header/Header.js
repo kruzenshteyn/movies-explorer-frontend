@@ -11,6 +11,7 @@ function Header(props) {
 
   function handlePopupOpen(){
     setPopupOpen(true);
+    console.log('popup')
   }
 
   function handleCloseClick(e){
