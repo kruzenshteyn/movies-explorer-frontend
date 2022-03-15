@@ -71,26 +71,22 @@ function App(props) {
 
   function checkToken(){
     const token = localStorage.getItem('token');
-    console.log(token);
     if(token){      
       mainApi.getUserInfo()
       .then(res=>{
         setCurrentUser({email:res.email, _id:res._id, name:res.name});
-        setIsLoggedIn(true);
+        setIsLoggedIn(true);        
         props.history.push('/movies');
         refreshProfileData();
-        setApiError(null);
-        return true;
+        setApiError(null);        
       })
       .catch(err => {
         console.log(err);
-        return false;
       })
     }
     else{
       setCurrentUser({email:'', _id:'', name:''});
       setIsLoggedIn(false);
-      return false;
     }
   }
 
@@ -112,8 +108,7 @@ function App(props) {
     mainApi.login(data.email, data.password)
     .then(res=>{
       localStorage.setItem('token', res.token);
-      const isOk = checkToken();
-      if(!isOk) setInfoTooltipProps({isOpen:true, isSuccess:false});
+      checkToken();      
     })
     .catch((err)=> {
       setInfoTooltipProps({isOpen:true, isSuccess:false});

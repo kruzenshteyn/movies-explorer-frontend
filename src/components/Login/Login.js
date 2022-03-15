@@ -24,7 +24,7 @@ function Login(props){
         isValid={isValid}>
       <div className='login'>        
         <div className='authPage__fields'>
-
+          <p className='authPage__label'>E-mail</p>
           <input type="email" className="authPage__input" value={values.email || ''} 
             pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
             required minLength="2" maxLength="40" name="email" onChange={handleChange}
