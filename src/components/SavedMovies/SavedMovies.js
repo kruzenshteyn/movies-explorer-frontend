@@ -43,7 +43,7 @@ function SavedMovies(props) {
 
   return (
     <div className='savedMovies'>
-      <Header />  
+      <Header loggedIn={props.loggedIn}/>  
       <main>
         <SearchForm onSubmit={handleSubmit} />
         {

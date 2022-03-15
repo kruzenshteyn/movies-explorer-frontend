@@ -32,7 +32,7 @@ function Profile(props){
 
   return(    
     <div className="profile">
-      <Header />
+      <Header loggedIn={props.loggedIn}/>
       <main>
         <h2 className="profile__title">Привет, {props.user.name}!</h2>
         <form className="profile__form" onSubmit={handleSubmit}>

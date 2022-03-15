@@ -65,8 +65,10 @@ function App(props) {
 
   function handleSignOut(){
     localStorage.removeItem('token');
-    setCurrentUser({email:'', _id:'', name:'', isLoggedIn:false});
+    setCurrentUser({email:'', _id:'', name:''});
+    setIsLoggedIn(false);
     props.history.push('/');    
+    // Delete cookies
   }
 
   function checkToken(){
@@ -75,8 +77,8 @@ function App(props) {
       mainApi.getUserInfo()
       .then(res=>{
         setCurrentUser({email:res.email, _id:res._id, name:res.name});
-        setIsLoggedIn(true);        
-        props.history.push('/movies');
+        setIsLoggedIn(true);
+        props.history.push('/movies');//???????
         refreshProfileData();
         setApiError(null);        
       })
@@ -196,21 +198,23 @@ function App(props) {
               onSaveMovie={handleSaveMovie}
               onUnsaveMovie={handleUnsaveMovie}
               isDataloading={false}
+              loggedIn={isLoggedIn}
             />
           </ProtectedRoute>
           <ProtectedRoute path="/saved-movies" loggedIn={isLoggedIn}>
             <SavedMovies 
               moviesData={savedMovies}
               onDeleteMovie={handleDeleteMovie}
+              loggedIn={isLoggedIn}
             />
           </ProtectedRoute>
           <ProtectedRoute path="/profile" loggedIn={isLoggedIn}>
             <Profile user={currentUser} onSignOut={handleSignOut} 
               onSubmit={handleEditProfile} apiError={apiError}
-              resetApiError={resetApiError} />
+              resetApiError={resetApiError} loggedIn={isLoggedIn}/>
           </ProtectedRoute>
           <Route exact path="/">
-            <Main />
+            <Main loggedIn={isLoggedIn} />
           </Route> 
           <Route path="/signin">
             <Login onSignIn={handleLogin} apiError={apiError} resetApiError={resetApiError}/>
