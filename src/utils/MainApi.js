@@ -13,7 +13,7 @@ class MainApi{
       this._baseUrl = param.baseUrl;
       this._signIn = this._baseUrl + 'signin';
       this._signUp = this._baseUrl + 'signup';
-      this._signOut = this._baseUrl + '';
+      this._signOut = this._baseUrl + 'signout';
       this._movies = this._baseUrl + 'movies';
       this._me = this._baseUrl + 'users/me';
       this._headers = param.headers;
@@ -53,6 +53,18 @@ class MainApi{
         })
       })
       .then(this._checkResponse);
+    }
+
+    logout(){
+      return fetch(this._signOut, {
+        method: "GET",
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization' : `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+      .then(this._checkResponse);;
     }
 
     getUserInfo(){

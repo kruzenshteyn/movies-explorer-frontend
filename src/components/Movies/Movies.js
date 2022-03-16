@@ -105,7 +105,7 @@ function Movies(props) {
               onUpdateMovies={updateLocalStorage}
             />
         }       
-        <div className={`movies__more ${(foundMovies.length < movieCount) ? '':'movies__more_active'}`}>
+        <div className={`movies__more ${(foundMovies.length <= movieCount) ? '':'movies__more_active'}`}>
           <button 
             type='button' className='movies__getmore-button'
             onClick={handleAddMoreClick}

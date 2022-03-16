@@ -64,22 +64,30 @@ function App(props) {
   },[]);
 
   function handleSignOut(){
-    localStorage.removeItem('token');
-    setCurrentUser({email:'', _id:'', name:''});
-    setIsLoggedIn(false);
-    props.history.push('/');    
+    
+    mainApi.logout()
+    .then(_=>{
+      localStorage.removeItem('token');
+      setCurrentUser({email:'', _id:'', name:'', isLoggedIn:false});
+      setIsLoggedIn(false);
+      props.history.push('/');
+    })
+    .catch((err)=> {
+      setInfoTooltipProps({isOpen:true, isSuccess:false, message:getServerErrorMessage(err)});
+      setApiError(getServerErrorMessage(err));
+      console.log(`Error = ${err}`)
+    });
     // Delete cookies
   }
 
-  function checkToken(){
+  function checkToken(isFromLogin = false){
     const token = localStorage.getItem('token');
     if(token){      
       mainApi.getUserInfo()
       .then(res=>{
-        setCurrentUser({email:res.email, _id:res._id, name:res.name});
+        setCurrentUser({email:res.email, _id:res._id, name:res.name, isLoggedIn:true});
         setIsLoggedIn(true);
-        props.history.push('/movies');//???????
-        refreshProfileData();
+        if(isFromLogin) props.history.push('/movies');
         setApiError(null);        
       })
       .catch(err => {
@@ -87,20 +95,19 @@ function App(props) {
       })
     }
     else{
-      setCurrentUser({email:'', _id:'', name:''});
+      setCurrentUser({email:'', _id:'', name:'', isLoggedIn:false});
       setIsLoggedIn(false);
     }
   }
 
   function handleRegister(data){
     mainApi.register(data.email, data.password, data.name)
-    .then(data=>{
-      setInfoTooltipProps({isOpen:true, isSuccess:true});
-      props.history.push('/signin');
-      
+    .then(res=>{
+      setInfoTooltipProps({isOpen:true, isSuccess:true, message:'Пользователь успешно зарегистрирован'});
+      handleLogin(data);      
     })
     .catch((err)=> {
-      setInfoTooltipProps({isOpen:true, isSuccess:false});
+      setInfoTooltipProps({isOpen:true, isSuccess:false, message:getServerErrorMessage(err)});
       setApiError(getServerErrorMessage(err));
       console.log(`Error = ${err}`)
     });
@@ -110,7 +117,7 @@ function App(props) {
     mainApi.login(data.email, data.password)
     .then(res=>{
       localStorage.setItem('token', res.token);
-      checkToken();      
+      checkToken(true);      
     })
     .catch((err)=> {
       setInfoTooltipProps({isOpen:true, isSuccess:false});
@@ -121,11 +128,13 @@ function App(props) {
 
   function handleEditProfile(data){
     mainApi.setUserInfo(data.name, data.email)
-    .then(data=>{      
-      checkToken();
+    .then(res=>{      
+      setCurrentUser({email:res.email, _id:res._id, name:res.name});      
+      setApiError(null);     
+      setInfoTooltipProps({isOpen:true, isSuccess:true, message:'Данные успешно изменены'});
     })
     .catch((err)=> {
-      setInfoTooltipProps({isOpen:true, isSuccess:false});
+      setInfoTooltipProps({isOpen:true, isSuccess:false, message:getServerErrorMessage(err)});
       setApiError(getServerErrorMessage(err));
       console.log(`Error = ${err}`)
     });
@@ -226,7 +235,12 @@ function App(props) {
             <NotFoundPage />
           </Route>
         </Switch>
-        <InfoTooltip isOpen={infoTooltipProps.isOpen} onClose={closeAllPopups} isSuccess={infoTooltipProps.isSuccess}/>
+        <InfoTooltip 
+          isOpen={infoTooltipProps.isOpen} 
+          onClose={closeAllPopups} 
+          isSuccess={infoTooltipProps.isSuccess}
+          message={infoTooltipProps.message}
+        />
       </CurrentUserContext.Provider>
     </div>
   );

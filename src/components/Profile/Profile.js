@@ -7,21 +7,30 @@ import { CurrentUserContext  } from '../../contexts/CurrentUserContext';
 
 function Profile(props){
   
-  const { values, handleChange, errors, isValid, resetForm, setValues } = useFormWithValidation();
+  const { values, handleChange, errors, isValid, setValues } = useFormWithValidation();
 
   const currentUser = React.useContext(CurrentUserContext);
   
+  const [isCorrectValues, setIsCorrectValues] = React.useState(false);
+
   React.useEffect(()=>{
-    props.resetApiError();
-    
+    props.resetApiError();    
   },[]);
 
   React.useEffect(()=>{
-    setValues({name: props.user.name, email: props.user.email});
+    setValues(currentUser);
+    // Отключении кнопки при изменении данных пользователя
+    setIsCorrectValues(false);
   }, [currentUser]);
 
+  React.useEffect(() => {
+    if(isValid){
+      setIsCorrectValues(values['email'] === currentUser.email ? false : true);
+    }
+  }, [isValid, values['email']])
+
   function handleSubmit(e){
-    e.preventDefault();    
+    e.preventDefault();
     props.onSubmit({name: values['name'], email: values['email']});
   }
 
@@ -29,7 +38,7 @@ function Profile(props){
     e.preventDefault();
     props.onSignOut();
   }
-
+  
   return(    
     <div className="profile">
       <Header loggedIn={props.loggedIn}/>
@@ -58,7 +67,7 @@ function Profile(props){
               <></>
             )
           }
-          <button type="submit"  className="profile__button profile__button_type_edit" disabled={!isValid}>Редактировать</button>
+          <button type="submit"  className="profile__button profile__button_type_edit" disabled={!isCorrectValues}>Редактировать</button>
           <button type="button"  className="profile__button profile__button_type_logout" onClick={handleSignOut}>Выйти из аккаунта</button>
         </form>
       </main>

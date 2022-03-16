@@ -8,8 +8,6 @@ import Header from '../Header/Header';
 
 function Main(props) {
 
-  console.log(`Main ${props.loggedIn}`);
-
   return (
     <div>
       <Header loggedIn={props.loggedIn} />

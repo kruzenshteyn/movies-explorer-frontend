@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 
 function Header(props) {
 
-  console.log(props.loggedIn);
 
   const [isPopupOpen, setPopupOpen] = useState(false);
 

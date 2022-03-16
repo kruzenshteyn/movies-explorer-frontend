@@ -11,12 +11,12 @@ function InfoTooltip(props){
     if(props.isSuccess){
       imageSrc = imgSuccess;
       imageAlt = 'Успешно';
-      message = 'Вы успешно зарегистрировались!'
+      message = props.message === '' ? 'Успешно' : props.message;
     }
     else{
       imageSrc = imgFail;
-      imageAlt = 'Успешно';
-      message = 'Что-то пошло не так! Попробуйте ещё раз.'
+      imageAlt = 'Не успешно';
+      message = props.message ? props.message : 'Что-то пошло не так! Попробуйте ещё раз.'
     }
 
     return(
