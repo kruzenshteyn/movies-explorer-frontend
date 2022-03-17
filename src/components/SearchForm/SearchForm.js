@@ -45,7 +45,7 @@ function SearchForm(props) {
           <input
             type="text" className="searchForm__input" placeholder="Введите название фильма"
             required minLength="1" maxLength="30" name = "keyword" value={values['keyword'] || ''}
-            onChange={handleChange} pattern="^[A-Za-zА-Яа-яЁё]+$"
+            onChange={handleChange} pattern="^[A-Za-zА-Яа-яЁё\s]+$"
           />            
           <button type="submit" className='searchForm__button' onClick={handleSubmit} disabled={!isValid}>
             <img src={imgFind} alt='найти' className='searchForm__search-icon'></img>  
