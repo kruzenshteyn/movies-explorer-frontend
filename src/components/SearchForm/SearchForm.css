@@ -54,6 +54,10 @@
   opacity: 0.5;
 }
 
+.searchForm__button:disabled{
+  opacity: 0.2;
+}
+
 .searchForm__find-icon{
   width: 22px;
   height: 22px;

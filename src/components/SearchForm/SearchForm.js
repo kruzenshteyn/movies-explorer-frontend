@@ -4,7 +4,11 @@ import imgSearch from '../../images/searchIcon.svg';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import React from 'react';
 
+import { useFormWithValidation } from '../../utils/useFormWithValidation';
+
 function SearchForm(props) {
+
+  const { values, handleChange, isValid } = useFormWithValidation();
 
   const [checked, setChecked] = React.useState(false);
   const [keyword, setKeyword] = React.useState('');
@@ -14,10 +18,11 @@ function SearchForm(props) {
     setKeyword(props.keyword);
   }, [props.keyword, props.justShortMovies]);
 
-  function handleChangeInput(e){
-    e.preventDefault();
-    setKeyword(e.target.value);
-  }
+  React.useEffect(() => {
+    if(isValid){
+      setKeyword(values['keyword']);
+    }
+  }, [isValid, values['keyword']])
 
   function handleCheckBoxClick(e){
     e.preventDefault();
@@ -36,13 +41,11 @@ function SearchForm(props) {
         <img src={imgSearch} alt='найти' className='searchForm__find-icon'></img>        
         <form className='searchForm__form'>
           <input
-            type="text" className="searchForm__input" id="caption" placeholder="Фильм"
-
-            required minLength="1" maxLength="30" name = "caption" value={keyword || ''}
-            onChange={handleChangeInput}
-
+            type="text" className="searchForm__input" placeholder="Введите название фильма"
+            required minLength="1" maxLength="30" name = "keyword" value={values['keyword'] || ''}
+            onChange={handleChange}
           />            
-          <button type="submit" className='searchForm__button' onClick={handleSubmit}>
+          <button type="submit" className='searchForm__button' onClick={handleSubmit} disabled={!isValid}>
             <img src={imgFind} alt='найти' className='searchForm__search-icon'></img>  
           </button>
         </form>
