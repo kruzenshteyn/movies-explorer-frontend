@@ -8,7 +8,7 @@ import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
 function SearchForm(props) {
 
-  const { values, handleChange, isValid, setValues } = useFormWithValidation();
+  const { values, handleChange, isValid, setValues, setIsValid } = useFormWithValidation();
 
   const [checked, setChecked] = React.useState(false);
   const [keyword, setKeyword] = React.useState('');
@@ -17,6 +17,7 @@ function SearchForm(props) {
     setChecked(props.justShortMovies);
     setKeyword(props.keyword);
     setValues({...values, ['keyword']: props.keyword});
+    if(props.keyword) setIsValid(true);
   }, [props.keyword, props.justShortMovies]);
 
   React.useEffect(() => {
@@ -44,7 +45,7 @@ function SearchForm(props) {
           <input
             type="text" className="searchForm__input" placeholder="Введите название фильма"
             required minLength="1" maxLength="30" name = "keyword" value={values['keyword'] || ''}
-            onChange={handleChange}
+            onChange={handleChange} pattern="^[A-Za-zА-Яа-яЁё]+$"
           />            
           <button type="submit" className='searchForm__button' onClick={handleSubmit} disabled={!isValid}>
             <img src={imgFind} alt='найти' className='searchForm__search-icon'></img>  
