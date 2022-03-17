@@ -8,7 +8,7 @@ import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
 function SearchForm(props) {
 
-  const { values, handleChange, isValid } = useFormWithValidation();
+  const { values, handleChange, isValid, setValues } = useFormWithValidation();
 
   const [checked, setChecked] = React.useState(false);
   const [keyword, setKeyword] = React.useState('');
@@ -16,6 +16,7 @@ function SearchForm(props) {
   React.useEffect(() => {
     setChecked(props.justShortMovies);
     setKeyword(props.keyword);
+    setValues({...values, ['keyword']: props.keyword});
   }, [props.keyword, props.justShortMovies]);
 
   React.useEffect(() => {
