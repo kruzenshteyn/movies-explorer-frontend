@@ -74,7 +74,6 @@ function Movies(props) {
     setMovieCount(movieCount + movieCountIncrement);    
   }
 
-  //searchFunc
 
   function handleSubmit(keyword, justShortMovies){
     setIsDataLoading(true);
@@ -83,14 +82,6 @@ function Movies(props) {
     setFoundMovies([]);
   }
 
-  function updateLocalStorage(){
-    /* foundMovies.forEach(function (item) {
-      const isInSaved = props.savedMovies.find((x)=> x.movieId === item.id);      
-      item.isSaved = isInSaved ? true : false;
-    })
-    localStorage.setItem('movies', JSON.stringify({movies:foundMovies, keyword, justShortMovies})); */
-  }
-  
   return (
     <div className='movies'>  
       <Header loggedIn={props.loggedIn}/>
@@ -108,7 +99,6 @@ function Movies(props) {
               onSaveMovie={props.onSaveMovie}
               onDeleteMovie={props.onUnsaveMovie}
               isSavedCards = {false}
-              onUpdateMovies={updateLocalStorage}
             />
         }       
         <div className={`movies__more ${(foundMovies.length <= movieCount) ? '':'movies__more_active'}`}>

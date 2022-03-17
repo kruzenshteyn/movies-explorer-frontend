@@ -14,7 +14,6 @@ function MoviesCardList(props) {
             onSaveMovie={props.onSaveMovie}
             onDeleteMovie={props.onDeleteMovie}
             isSavedCards = {props.isSavedCards}
-            onUpdateMovies={props.onUpdateMovies}
           />
         ))
       }      
