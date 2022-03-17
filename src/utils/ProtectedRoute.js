@@ -1,15 +1,12 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { CurrentUserContext  } from '../contexts/CurrentUserContext';
 
-const ProtectedRoute = (props) => {  
-  const currentUser = React.useContext(CurrentUserContext);
-  console.log(props.loggedIn);
-  console.log(currentUser);
+const ProtectedRoute = (props) => {
+  const token = localStorage.getItem('token');
   return (
     <Route>
       {() =>
-        props.loggedIn ? props.children : <Redirect to="/" />
+        token ? props.children : <Redirect to="/" />
       }
     </Route>
   );

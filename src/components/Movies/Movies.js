@@ -13,83 +13,89 @@ import useWindowSize from '../../utils/useWindowSize';
 import Preloader from '../Preloader/Preloader';
 
 
+import {
+  MOVIE_COUNT_1280,
+  MOVIE_COUNT_768,
+  MOVIE_COUNT_320,
+
+  MOVIE_COUNT_INC_1280,
+  MOVIE_COUNT_INC_768,
+  MOVIE_COUNT_INC_320
+} from '../../utils/config';
+
 function Movies(props) {
   const [foundMovies, setFoundMovies] = React.useState([]);
 
-  
   const [isDataloading, setIsDataLoading] = React.useState(false);
   
   const windowSize = useWindowSize();
   const [movieCount, setMovieCount] = React.useState(12);
   const [maxMovieCount, setMaxMovieCount] = React.useState(12);
   const [movieCountIncrement, setMovieCountIncrement] = React.useState(3);
+
+  const [justShortMovies, setJustShortMovies] = React.useState(false);
+  const [keyword, setKeyword] = React.useState('');
   
   useEffect(()=>{    
     if(windowSize.width < 766){
-      setMaxMovieCount(5);
-      setMovieCountIncrement(1);
+      setMaxMovieCount(MOVIE_COUNT_320);
+      setMovieCountIncrement(MOVIE_COUNT_INC_320);
     } else if (windowSize.width < 1278){
-      setMaxMovieCount(8);
-      setMovieCountIncrement(2);
+      setMaxMovieCount(MOVIE_COUNT_768);
+      setMovieCountIncrement(MOVIE_COUNT_INC_768);
     } else {
-      setMaxMovieCount(12);
-      setMovieCountIncrement(3);
+      setMaxMovieCount(MOVIE_COUNT_1280);
+      setMovieCountIncrement(MOVIE_COUNT_INC_1280);
     }
     setMovieCount(maxMovieCount);
-  }, [windowSize, foundMovies, maxMovieCount]);
+  }, [windowSize, props.moviesData, maxMovieCount]);
 
   useEffect(() => {
-    const lastRes = localStorage.getItem('movies');
-    if(lastRes) setFoundMovies(JSON.parse(lastRes));
+    loadLocalStorage();
   }, []);
 
   useEffect(() => {   
-      updateLocalStorage();    
-  }, [foundMovies])
+    loadLocalStorage();
+    setIsDataLoading(false);
+  }, [props.moviesData])
+
+  function loadLocalStorage(){
+    const lastRes = localStorage.getItem('movies');
+    if(lastRes) 
+    {
+      const data = JSON.parse(lastRes);
+      setJustShortMovies(data.justShortMovies);
+      setKeyword(data.keyword);
+      setFoundMovies(data.movies);
+    }
+  }
 
   function handleAddMoreClick(){
     setMovieCount(movieCount + movieCountIncrement);    
   }
 
+  //searchFunc
+
   function handleSubmit(keyword, justShortMovies){
     setIsDataLoading(true);
-    setFoundMovies([]);
     // Поиск по заданному ключевому слову
-    var sorted = props.moviesData.filter((m) => {
-      if(m.nameRU.toLowerCase().includes(keyword.toLowerCase())){
-        if(justShortMovies){
-          return m.duration < 40;
-        }
-        else return true;
-      }
-      else return false;
-    } );
-    // Проверка на наличие в сохранённых
-    sorted.forEach(function (item) {
-      const isInSaved = props.savedMovies.find((x)=> x.movieId === item.id);      
-      item.isSaved = isInSaved ? true : false;
-    })
-    // Задержка для моделирования поиска на сервере
-    setTimeout(()=>{
-      setIsDataLoading(false);
-      setFoundMovies(sorted);
-      localStorage.setItem('movies', JSON.stringify(sorted)); 
-    }, 500);
+    props.searchFunc(keyword, justShortMovies);
+    setFoundMovies([]);
   }
 
   function updateLocalStorage(){
-    foundMovies.forEach(function (item) {
+    /* foundMovies.forEach(function (item) {
       const isInSaved = props.savedMovies.find((x)=> x.movieId === item.id);      
       item.isSaved = isInSaved ? true : false;
     })
-    localStorage.setItem('movies', JSON.stringify(foundMovies));
+    localStorage.setItem('movies', JSON.stringify({movies:foundMovies, keyword, justShortMovies})); */
   }
   
   return (
     <div className='movies'>  
       <Header loggedIn={props.loggedIn}/>
       <main>
-        <SearchForm onSubmit={handleSubmit} />
+        <SearchForm onSubmit={handleSubmit} keyword={keyword} justShortMovies={justShortMovies} />
         {
           isDataloading ? <Preloader /> : <></>
         }

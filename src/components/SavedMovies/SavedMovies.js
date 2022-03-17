@@ -12,16 +12,16 @@ import React from 'react';
 function SavedMovies(props) {
 
   React.useEffect(() => {
-    setFoundMovies(props.moviesData);
+    setFoundSavedMovies(props.moviesData);
   }, [props.moviesData])
 
-  const [foundMovies, setFoundMovies] = React.useState([]);
+  const [foundSavedMovies, setFoundSavedMovies] = React.useState([]);
 
   const [isDataloading, setIsDataLoading] = React.useState(false);
     
   function handleSubmit(keyword, justShortMovies){
     setIsDataLoading(true);
-    setFoundMovies([]);
+    setFoundSavedMovies([]);
     // Поиск по заданному ключевому слову
     var sorted = props.moviesData.filter((m) => {
       if(m.nameRU.toLowerCase().includes(keyword.toLowerCase())){
@@ -36,8 +36,7 @@ function SavedMovies(props) {
     // Задержка для моделирования поиска на сервере
     setTimeout(()=>{
       setIsDataLoading(false);
-      setFoundMovies(sorted);
-      localStorage.setItem('movies', JSON.stringify(sorted)); 
+      setFoundSavedMovies(sorted);
     }, 500);
   }
 
@@ -50,11 +49,11 @@ function SavedMovies(props) {
           isDataloading ? <Preloader /> : <></>
         }
         {
-          foundMovies.length === 0 && !isDataloading
+          foundSavedMovies.length === 0 && !isDataloading
           ? <MoviesNotFound text="Ничего не найдено" /> 
           : <MoviesCardList 
-              movies={foundMovies} 
-              movieCount={foundMovies.length} 
+              movies={foundSavedMovies} 
+              movieCount={foundSavedMovies.length} 
               onDeleteMovie={props.onDeleteMovie}
               isSavedCards = {true}
             />

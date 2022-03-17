@@ -29,7 +29,6 @@ function MoviesCard(props) {
       if(isSaved) {props.onDeleteMovie(movie);}
       else {props.onSaveMovie(movie);}
       setIsSaved(!isSaved);
-      props.onUpdateMovies();
     }
   }
   

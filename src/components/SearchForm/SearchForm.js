@@ -9,6 +9,11 @@ function SearchForm(props) {
   const [checked, setChecked] = React.useState(false);
   const [keyword, setKeyword] = React.useState('');
 
+  React.useEffect(() => {
+    setChecked(props.justShortMovies);
+    setKeyword(props.keyword);
+  }, [props.keyword, props.justShortMovies]);
+
   function handleChangeInput(e){
     e.preventDefault();
     setKeyword(e.target.value);
