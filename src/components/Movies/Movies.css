@@ -8,6 +8,11 @@
 .movies__more{
   padding-top: 48px;
   padding-bottom: 78px;
+  display: none;
+}
+
+.movies__more_active{
+  display: block;
 }
 
 .movies__getmore-button{

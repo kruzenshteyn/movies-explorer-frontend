@@ -47,6 +47,11 @@
   border-radius: 3px;
   border: none;
   height: 45px;
+  opacity: 1;
+}
+
+.authPage__button:disabled{
+  opacity: 0.2;
 }
 
 .authPage__button:hover{
@@ -71,8 +76,7 @@
   opacity: 0.5;
 }
 
-.authPage__fields{  
-  border-bottom: solid 1px #E8E8E8;
+.authPage__fields{
   margin-top: 24px;  
 }
 
@@ -93,9 +97,14 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.21;
-  color: #000000;
+  color: #000000;  
   border: none;
+  border-bottom: solid 1px #E8E8E8;
   margin: 5px 0 8px 0;
+}
+
+.authPage__input:focus{
+  outline: 0 none;
 }
 
 .authPage__error{

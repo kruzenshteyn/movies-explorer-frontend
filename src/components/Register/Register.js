@@ -1,52 +1,62 @@
 import './Register.css';
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import AuthPage from '../AuthPage/AuthPage';
 
-function Login(props){
+import { useFormWithValidation } from '../../utils/useFormWithValidation';
 
-  const [values, setValues] = React.useState({name:'Виталий', email:'pochta@yandex.ru', password:'test'});
+function Register(props){
+
+  const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
   function handleSubmit(e){
     e.preventDefault();
-    console.log('Функция в процессе разработки');
-    alert('Функция в процессе разработки');
+    props.onSignUp(values);
   }
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setValues(_ => ({
-      ...values,
-      [name]: value,
-    }))
-  }
+  useEffect(()=>{
+    props.resetApiError();
+  },[]);
+
+  useEffect(() => {
+    resetForm();
+  }, []);
 
   return(
     <AuthPage title= 'Добро пожаловать!' btnTitle='Зарегистрироваться' 
-        text='Уже зарегистрированы? ' linkText='Войти' link='/signin' handleSubmit={handleSubmit}>
+        text='Уже зарегистрированы? ' linkText='Войти' link='/signin' handleSubmit={handleSubmit}
+        isValid={isValid}>
       <div className='register'>
         <div className='authPage__fields'>
           <p className='authPage__label'>Имя</p>
           <input type="text" className="authPage__input" value={values.name || ''} 
             required minLength="2" maxLength="40" name="name" onChange={handleChange}
-            placeholder="Имя" />          
+
+            placeholder="Имя" />
+            <span className="authPage__error" id="authPage-error">{errors['name']}</span>
         </div>
         <div className='authPage__fields'>
           <p className='authPage__label'>E-mail</p>
-          <input type="text" className="authPage__input" value={values.email || ''} 
+          <input type="email" className="authPage__input" value={values.email || ''} 
+            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
             required minLength="2" maxLength="40" name="email" onChange={handleChange}
-            placeholder="pochta@yandex.ru" />          
+            placeholder="pochta@yandex.ru" />
+          <span className="authPage__error" id="authPage-error">{errors['email']}</span>
+
         </div>
         <div className='authPage__fields'>
           <p className='authPage__label'>Пароль</p>
           <input type="password" className="authPage__input" value={values.password || ''} 
             required minLength="5" maxLength="40" name="password" onChange={handleChange}
-            placeholder="Пароль" />          
+
+            placeholder="Пароль" />
+          <span className="authPage__error" id="authPage-error">{errors['password']}</span>
+
         </div>        
-        <span className="authPage__error" id="authPage-error">Что-то пошло не так...</span>
+        <span className="authPage__error" id="authPage-error">{props.apiError}</span>
       </div>      
     </AuthPage>
   )
 }
 
-export default Login;
+export default Register;

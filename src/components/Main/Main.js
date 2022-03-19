@@ -3,20 +3,19 @@ import Promo from './Promo/Promo';
 import AboutProject from './AboutProject/AboutProject';
 import AboutMe from './AboutMe/AboutMe';
 import Techs from './Techs/Techs';
-import HeaderMain from './HeaderMain/HeaderMain';
 import Footer from '../Footer/Footer';
-
+import Header from '../Header/Header';
 
 function Main(props) {
 
   return (
     <div>
-      <HeaderMain />
+      <Header loggedIn={props.loggedIn} />
       <main className="main">
         <Promo />
-        <AboutProject />
-        <Techs />
-        <AboutMe />
+        <AboutProject name='aboutProject' />
+        <Techs name='techs' />
+        <AboutMe name='aboutMe' />
       </main>      
       <Footer />
     </div>
