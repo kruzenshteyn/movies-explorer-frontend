@@ -281,7 +281,7 @@ function App(props) {
         />
       </CurrentUserContext.Provider>
     </div>
-  ); 
+  );
 }
 
 export default withRouter(App);
